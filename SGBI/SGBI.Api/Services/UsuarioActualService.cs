@@ -13,6 +13,6 @@ public class UsuarioActualService : IUsuarioActualService
 
     public string ObtenerNombreUsuarioActual()
     {
-        return httpContextAccessor.HttpContext.User.Identity.Name;
+        return httpContextAccessor.HttpContext!.User.Identity!.Name!;
     }
 }
