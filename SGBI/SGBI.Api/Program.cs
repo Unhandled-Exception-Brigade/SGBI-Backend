@@ -8,6 +8,7 @@ using SGBI.SBGI.Core.Entities;
 using SGBI.SBGI.Core.Interfaces;
 using SGBI.SGBI.API.Data;
 using SGBI.SGBI.API.Services;
+using SGBI.SGBI.Core.Common.Seeds;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -95,60 +96,20 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
+return;
 
 async Task SeedData()
 {
     var scopeFactory = app!.Services.GetRequiredService<IServiceScopeFactory>();
     using var scope = scopeFactory.CreateScope();
 
-    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Usuario>>();
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Usuario>>();
 
-    context.Database.EnsureCreated();
+    var seedRoles = new SeedRoles(roleManager);
+    await seedRoles.SeedAsync();
 
-    if (!roleManager.Roles.Any())
-    {
-        logger.LogInformation("Creando roles por defecto");
-
-        await roleManager.CreateAsync(new IdentityRole
-        {
-            Name = "Administrador"
-        });
-
-        await roleManager.CreateAsync(new IdentityRole
-        {
-            Name = "Jefe"
-        });
-
-        await roleManager.CreateAsync(new IdentityRole
-        {
-            Name = "Usuario"
-        });
-    }
-
-    if (!userManager.Users.Any())
-    {
-        logger.LogInformation("Creando usuario por defecto");
-
-        var newUser = new Usuario
-        {
-            Email = "deishuu666@gmail.com",
-            Nombre = "William",
-            PrimerApellido = "Rodriguez",
-            SegundoApellido = "Rocha",
-            UserName = "208450864"
-        };
-
-        await userManager.CreateAsync(newUser);
-
-        const string nuevaContrasena = "Cherry666@";
-
-        newUser.PasswordHash = PasswordHasher.HashPassword(nuevaContrasena!);
-        await userManager.UpdateAsync(newUser);
-
-        await userManager.AddToRoleAsync(newUser, "Administrador");
-    }
+    var seedUsers = new SeedUsuarios(userManager);
+    await seedUsers.SeedAsync();
 }
+

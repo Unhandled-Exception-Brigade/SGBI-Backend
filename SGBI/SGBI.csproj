@@ -28,6 +28,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="SGBI.Core\Common\Settings\" />
       <Folder Include="SGBI.Tests\" />
     </ItemGroup>
 
