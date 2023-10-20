@@ -78,6 +78,12 @@ public class CuentaService : ICuentaService
             {
                 authClaims.Add(new Claim(ClaimTypes.Role, role));
             }
+            
+            foreach (var claim in authClaims)
+            {
+                await _userManager.AddClaimAsync(usuario, claim);
+            }
+          
 
             var token = GenerateToken.CreateToken(_configuration, authClaims);
 

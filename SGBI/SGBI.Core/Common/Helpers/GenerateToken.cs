@@ -6,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace SGBI.SBGI.Core.Common.Helpers;
 
-public class GenerateToken
+public abstract class GenerateToken
 {
     public static JwtSecurityToken CreateToken(
         IConfiguration _configuration, List<Claim> authClaims)
