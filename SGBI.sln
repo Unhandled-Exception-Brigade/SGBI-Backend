@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGBI", "SGBI\SGBI.csproj", "{AEDFBBFC-FBE9-4652-A57C-0A034DA0EF45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEDFBBFC-FBE9-4652-A57C-0A034DA0EF45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEDFBBFC-FBE9-4652-A57C-0A034DA0EF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEDFBBFC-FBE9-4652-A57C-0A034DA0EF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEDFBBFC-FBE9-4652-A57C-0A034DA0EF45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
