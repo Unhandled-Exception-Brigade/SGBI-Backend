@@ -19,7 +19,7 @@ public class TarifaController : ControllerBase
     }
     
     
-    //[Authorize(Roles = "Administrador")]
+    [Authorize(Roles = "Administrador")]
     [HttpPost("registrar")] //Endpoint para registrar nuevas tarifas
     public async Task<IActionResult> Registrar([FromBody] TarifaRegisterDto? tarifaDto)
     {
@@ -32,7 +32,7 @@ public class TarifaController : ControllerBase
             // {
             //     return Unauthorized(new { Message = "Usuario no autenticado" });
             // }
-            // Check if HttpContext is available
+            
             if (HttpContext == null)
             {
                 return StatusCode(500, new { Message = "Error en el servidor", Error = "HttpContext is null" });
