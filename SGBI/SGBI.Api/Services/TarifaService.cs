@@ -71,7 +71,7 @@ public class TarifaService : ITarifaService
     public async Task<List<TarifaDto>> ListarTarifaExonerarAsync()
     {
         var tarifas = await _context.Tarifas
-            .Where(t => t.Descripcion == "TARIFA EXONERAR")
+            .Where(t => t.Descripcion == "TARIFA MONTO MAXIMO A EXONERAR")
             .ToListAsync();
 
 
@@ -83,7 +83,7 @@ public class TarifaService : ITarifaService
     public async Task<List<TarifaDto>> ListarTarifaMantenimientoAsync()
     {
         var tarifas = await _context.Tarifas
-            .Where(t => t.Descripcion == "TARIFA MANTENIMIENTO")
+            .Where(t => t.Descripcion == "TARIFA MANTENIMIENTO DE PARQUES Y OBRAS DE ORNATO")
             .ToListAsync();
 
 
@@ -95,7 +95,7 @@ public class TarifaService : ITarifaService
     public async Task<List<TarifaDto>> ListarTarifaServiciosAseoAsync()
     {
         var tarifas = await _context.Tarifas
-            .Where(t => t.Descripcion == "TARIFA SERVICIOS ASEO")
+            .Where(t => t.Descripcion == "TARIFA SERVICIOS ASEO DE VIAS Y SITIOS PUBLICOS")
             .ToListAsync();
 
 
@@ -107,7 +107,7 @@ public class TarifaService : ITarifaService
     public async Task<List<TarifaDto>> ListarTarifaServiciosBasuraAsync()
     {
         var tarifas = await _context.Tarifas
-            .Where(t => t.Descripcion == "TARIFA SERVICIOS BASURA")
+            .Where(t => t.Descripcion == "TARIFA SERVICIOS DE RECOLECCION DE BASURA")
             .ToListAsync();
 
 
