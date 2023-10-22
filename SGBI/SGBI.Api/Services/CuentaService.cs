@@ -401,7 +401,8 @@ public class CuentaService : ICuentaService
                     PrimerApellido = user.PrimerApellido,
                     SegundoApellido = user.SegundoApellido,
                     Email = user.Email,
-                    Rol = roles.ToList()
+                    Rol = roles.ToList(),
+                    Activo = user.Activo
                 };
                 usuariosConRolesDto.Add(usuarioConRolDto);
             }
