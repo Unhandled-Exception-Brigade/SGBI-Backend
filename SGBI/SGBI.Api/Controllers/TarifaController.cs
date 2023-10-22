@@ -19,7 +19,7 @@ public class TarifaController : ControllerBase
     }
     
     
-    [Authorize(Roles = "Administrador")]
+    [Authorize(Roles = " Administrador, Jefe")]
     [HttpPost("registrar")] //Endpoint para registrar nuevas tarifas
     public async Task<IActionResult> Registrar([FromBody] TarifaRegisterDto? tarifaDto)
     {

@@ -95,7 +95,7 @@ public class CuentaController : ControllerBase
     }
 
 
-    [Authorize]
+    [Authorize (Roles = "Administrador")]
     [HttpPost("actualizar-usuario")]
     public async Task<IActionResult> ActualizarUsuario([FromBody] UsuarioRegisterDto? usuarioRegisterDto)
     {
