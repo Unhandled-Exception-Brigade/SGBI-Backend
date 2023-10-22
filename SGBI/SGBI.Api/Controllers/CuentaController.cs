@@ -95,11 +95,26 @@ public class CuentaController : ControllerBase
     }
 
 
-    [Authorize]
+    //[Authorize]
     [HttpPost("actualizar-usuario")]
-    public async Task<IActionResult> ActualizarUsuario([FromBody] UsuarioRegisterDto usuarioRegisterDto)
+    public async Task<IActionResult> ActualizarUsuario([FromBody] UsuarioRegisterDto? usuarioRegisterDto)
     {
-        return null!;
+        if (usuarioRegisterDto == null)
+            return BadRequest(new { Message = "Datos inválidos" });
+
+        try
+        {
+            var resultado = await _cuentaService.ActualizarUsuarioAsync(usuarioRegisterDto);
+
+            if (resultado != "Usuario Actualizado")
+                return BadRequest(new { Message = resultado });
+
+            return Ok(new { Message = "Usuario Actualizado Correctamente" });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { Message = "Error en el servidor", Error = ex.Message });
+        }
     }
 
     [HttpPost("resetear-contrasena")]

@@ -16,6 +16,10 @@ public interface ICuentaService
     //Cambio de contraseña y envío de correo
     Task<string> EnviarEmailCambioContrasenaAsync(string email);
     Task<string> ResetearContrasenaAsync(CambiarContrasenaDto cambiarContrasenaDto);
+    
+    
+    //Editar usuario
+    Task<string> ActualizarUsuarioAsync(UsuarioRegisterDto? usuarioRegisterDto);
 
     //Obtener todos los usuarios
     Task<List<UsuarioRegisterDto>> ObtenerTodosUsuariosAsync();

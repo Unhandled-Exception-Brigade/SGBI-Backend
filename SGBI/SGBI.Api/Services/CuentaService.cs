@@ -381,6 +381,78 @@ public class CuentaService : ICuentaService
             throw new InvalidOperationException("Error en el servidor: " + ex.Message, ex);
         }
     }
+    
+    
+     public async Task<string> ActualizarUsuarioAsync(UsuarioRegisterDto? usuarioRegisterDto)
+    {
+
+        if (string.IsNullOrWhiteSpace(usuarioRegisterDto!.Nombre))
+            throw new ArgumentNullException(nameof(usuarioRegisterDto.Nombre), "Nombre vacío");
+
+        if (string.IsNullOrWhiteSpace(usuarioRegisterDto.PrimerApellido))
+            throw new ArgumentNullException(nameof(usuarioRegisterDto.PrimerApellido), "Apellido vacío");
+
+        if (string.IsNullOrWhiteSpace(usuarioRegisterDto.SegundoApellido))
+            throw new ArgumentNullException(nameof(usuarioRegisterDto.SegundoApellido), "Apellido vacío");
+
+        if (string.IsNullOrWhiteSpace(usuarioRegisterDto.Email))
+            throw new ArgumentNullException(nameof(usuarioRegisterDto.Email), "Correo vacío");
+
+        try
+        {
+            var enviarCorreoPrimeraVez = false;
+
+            var usuario = await _userManager.FindByNameAsync(usuarioRegisterDto.Cedula!);
+
+            if (usuario.Email != usuarioRegisterDto.Email)
+            {
+                if (await VerificarCorreoExisteAsync(usuarioRegisterDto.Email))
+                {
+                    throw new UnauthorizedAccessException("Correo ya perteneciente a otro usuario");
+                }
+                if (!usuario.Activo)
+                {
+                    enviarCorreoPrimeraVez = true;
+                }else
+                {
+                    var from = _configuration["EmailSettings:From"];
+                    var Email = new CorreoModel(usuarioRegisterDto.Email, "Cambio de correo electrónico - SGBI", EmailBody.ChangeEmailSucess(usuarioRegisterDto.Email));
+
+                    _correoService.EnviarCorreo(Email);
+                }
+            }
+
+            usuario.Nombre = usuarioRegisterDto.Nombre;
+            usuario.PrimerApellido = usuarioRegisterDto.PrimerApellido;
+            usuario.SegundoApellido = usuarioRegisterDto.SegundoApellido;
+            usuario.Email = usuarioRegisterDto.Email;
+            usuario.Activo = (bool)usuarioRegisterDto.Activo!;
+            
+            
+            // Remueve al usuario de todos los roles actuales
+            var rolesActuales = await _userManager.GetRolesAsync(usuario);
+            await _userManager.RemoveFromRolesAsync(usuario, rolesActuales);
+
+            
+            await _userManager.AddToRolesAsync(usuario, usuarioRegisterDto.Rol!);
+            
+            
+
+            await _userManager.UpdateAsync(usuario);
+            
+            if (enviarCorreoPrimeraVez)
+            {
+
+                await EnviarEmailActivacionAsync(usuarioRegisterDto.Email);
+            }
+
+            return "Usuario Actualizado";
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException("Error al actualizar el usuario: " + ex.Message, ex);
+        }
+    }
 
 
     public async Task<List<UsuarioRegisterDto>> ObtenerTodosUsuariosAsync()
@@ -412,6 +484,22 @@ public class CuentaService : ICuentaService
         catch (Exception ex)
         {
             throw new Exception("Error al obtener usuarios con roles: " + ex.Message, ex);
+        }
+    }
+    
+    
+    
+    private async Task<bool> VerificarCorreoExisteAsync(string email)
+    {
+        if (string.IsNullOrEmpty(email)) return false;
+
+        try
+        {
+            return await _userManager.Users.AnyAsync(x => x.Email == email);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error al verificar correo: " + ex.Message, ex);
         }
     }
 }
