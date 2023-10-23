@@ -28,22 +28,11 @@ public class TarifaController : ControllerBase
 
         try
         {
-            // if (!User.Identity!.IsAuthenticated)
-            // {
-            //     return Unauthorized(new { Message = "Usuario no autenticado" });
-            // }
-            
-            if (HttpContext == null)
-            {
-                return StatusCode(500, new { Message = "Error en el servidor", Error = "HttpContext is null" });
-            }
-
-            
 
             // Use userName as needed
             var tarifaRegistrada = await _tarifaService.RegistrarNuevaTarifaAsync(tarifaDto);
             
-            if (tarifaRegistrada != "Tarifa Creada" && tarifaRegistrada != "Tarifa Actualizada")
+            if (tarifaRegistrada != "Tarifa Creada")
                 return BadRequest(new { Message = tarifaRegistrada });
 
             return Ok(new
