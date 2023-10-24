@@ -19,7 +19,7 @@ public class TarifaController : ControllerBase
     }
     
     
-    [Authorize(Roles = " Administrador, Jefe")]
+    [Authorize(Roles = "Administrador, Jefe")]
     [HttpPost("registrar")] //Endpoint para registrar nuevas tarifas
     public async Task<IActionResult> Registrar([FromBody] TarifaRegisterDto? tarifaDto)
     {
@@ -33,7 +33,7 @@ public class TarifaController : ControllerBase
             var tarifaRegistrada = await _tarifaService.RegistrarNuevaTarifaAsync(tarifaDto);
             
             if (tarifaRegistrada != "Tarifa Creada")
-                return BadRequest(new { Message = tarifaRegistrada });
+                return StatusCode(200,new { Message = tarifaRegistrada });
 
             return Ok(new
             {
@@ -47,7 +47,7 @@ public class TarifaController : ControllerBase
         }
     }
 
-
+    [Authorize(Roles = "Administrador")]
     [HttpGet("listar")] //Endpoint para listar tarifas
     public async Task<IActionResult> Listar()
     {
@@ -63,6 +63,7 @@ public class TarifaController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe")]
     [HttpGet("listar/exonerar")] //Endpoint para listar tarifas
     public async Task<IActionResult> ListarExonerar()
     {
@@ -77,7 +78,7 @@ public class TarifaController : ControllerBase
             return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
         }
     }
-
+    [Authorize(Roles = "Administrador, Jefe")]
     [HttpGet("listar/mantenimiento")] //Endpoint para listar tarifas
     public async Task<IActionResult> ListarMantenimiento()
     {
@@ -92,7 +93,7 @@ public class TarifaController : ControllerBase
             return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
         }
     }
-
+    [Authorize(Roles = "Administrador, Jefe")]
     [HttpGet("listar/servicios-aseo")] //Endpoint para listar tarifas
     public async Task<IActionResult> ListarServiciosAseo()
     {
@@ -107,7 +108,7 @@ public class TarifaController : ControllerBase
             return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
         }
     }
-
+    [Authorize(Roles = "Administrador, Jefe")]
     [HttpGet("listar/servicios-basura")] //Endpoint para listar tarifas
     public async Task<IActionResult> ListarServiciosBasura()
     {

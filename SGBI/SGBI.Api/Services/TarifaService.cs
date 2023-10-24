@@ -21,6 +21,23 @@ public class TarifaService : ITarifaService
     public async Task<string> RegistrarNuevaTarifaAsync(TarifaRegisterDto tarifaRegisterDto)
     {
         tarifaRegisterDto.Descripcion = tarifaRegisterDto.Descripcion!.ToUpper();
+
+        if (tarifaRegisterDto.Descripcion == "TARIFA MONTO MAXIMO A EXONERAR")
+        {
+            var currentYear = DateTime.Now.Year;
+
+            // Verificar si ya existe una tarifa para el año actual con el mismo monto
+            var existingTarifa = await _context.Tarifas
+                .FirstOrDefaultAsync(t => t.FechaModificacion!.Value.Year == currentYear
+                                          && t.MontoColones == tarifaRegisterDto.MontoColones);
+            
+            if (existingTarifa != null)
+            {
+                return "Ya existe una tarifa para este año con el mismo monto";
+            }
+            
+            
+        }
         
         var tarifaFrontEnd = _mapper.Map<TarifaRegisterDto, Tarifa>(tarifaRegisterDto);
 
