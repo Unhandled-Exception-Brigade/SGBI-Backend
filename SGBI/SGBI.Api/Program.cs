@@ -23,10 +23,10 @@ builder.Services.AddSwaggerGen();
 builder.Configuration.AddJsonFile("SGBI.API/appsettings.json", optional: false, reloadOnChange: true);
 
 
-var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnection");
+var connectionString = builder.Configuration.GetConnectionString("SQLServerConnection");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connectionString));
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddIdentity<Usuario, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>()

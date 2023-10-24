@@ -43,7 +43,7 @@ public class TarifaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = "Error en el servidor", Error = ex.Message });
+            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
         }
     }
 
@@ -59,7 +59,7 @@ public class TarifaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = "Error en el servidor", Error = ex.Message });
+            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
         }
     }
 
@@ -74,7 +74,7 @@ public class TarifaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = "Error en el servidor", Error = ex.Message });
+            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
         }
     }
 
@@ -89,7 +89,7 @@ public class TarifaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = "Error en el servidor", Error = ex.Message });
+            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
         }
     }
 
@@ -104,7 +104,7 @@ public class TarifaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = "Error en el servidor", Error = ex.Message });
+            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
         }
     }
 
@@ -119,7 +119,7 @@ public class TarifaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = "Error en el servidor", Error = ex.Message });
+            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
         }
     }
 }

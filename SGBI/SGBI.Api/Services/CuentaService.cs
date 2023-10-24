@@ -152,7 +152,7 @@ public class CuentaService : ICuentaService
         }
         catch (Exception ex)
         {
-            throw new InvalidOperationException("Error en el servidor: " + ex.Message, ex);
+            throw new InvalidOperationException( ex.Message, ex);
         }
     }
 
@@ -248,7 +248,7 @@ public class CuentaService : ICuentaService
         }
         catch (Exception ex)
         {
-            throw new InvalidOperationException("Error en el servidor: " + ex.Message, ex);
+            throw new InvalidOperationException( ex.Message, ex);
         }
     }
 
@@ -293,7 +293,7 @@ public class CuentaService : ICuentaService
         }
         catch (Exception ex)
         {
-            throw new InvalidOperationException("Error en el servidor: " + ex.Message, ex);
+            throw new InvalidOperationException(ex.Message, ex);
         }
     }
 
@@ -330,7 +330,7 @@ public class CuentaService : ICuentaService
         }
         catch (Exception ex)
         {
-            throw new InvalidOperationException("Error en el servidor: " + ex.Message, ex);
+            throw new InvalidOperationException(ex.Message, ex);
         }
     }
 
@@ -378,7 +378,7 @@ public class CuentaService : ICuentaService
         }
         catch (Exception ex)
         {
-            throw new InvalidOperationException("Error en el servidor: " + ex.Message, ex);
+            throw new InvalidOperationException( ex.Message, ex);
         }
     }
     

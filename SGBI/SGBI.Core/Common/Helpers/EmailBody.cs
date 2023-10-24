@@ -4,7 +4,7 @@ public static class EmailBody
 {
   public static string ChangePasswordRequest(string email, string emailToken)
   {
-    var resetLink = $"http://localhost:4200/resetear?email={email}&code={emailToken}";
+    var resetLink = $"https://sgbiapi2023-24846.web.app/resetear?email={email}&code={emailToken}";
 
     return $@"<!DOCTYPE html>
 <html lang=""en-US"">
@@ -326,7 +326,7 @@ public static class EmailBody
                         ""
                       >
                         Por favor, contacte nuestro equipo de soporte
-                        immediatamente
+                        inmediatamente
                       </p>
                     </td>
                   </tr>
@@ -368,7 +368,7 @@ public static class EmailBody
 
     public static string ActivateAccount(string email, string emailToken)
     {
-        var resetLink = $"http://localhost:4200/activar?email={email}&code={emailToken}";
+        var resetLink = $"https://sgbiapi2023-24846.web.app/activar?email={email}&code={emailToken}";
 
         return $@"<!DOCTYPE html>
 <html lang=""en-US"">
@@ -689,7 +689,7 @@ public static class EmailBody
                         ""
                       >
                         Por favor, contacte nuestro equipo de soporte
-                        immediatamente
+                        inmediatamente
                       </p>
                     </td>
                   </tr>
@@ -864,7 +864,7 @@ public static class EmailBody
                         ""
                       >
                         Por favor, contacte nuestro equipo de soporte
-                        immediatamente
+                        inmediatamente
                       </p>
                     </td>
                   </tr>
