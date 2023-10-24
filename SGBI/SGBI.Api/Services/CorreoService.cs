@@ -21,7 +21,7 @@ public class CorreoService: ICorreoService
         var emailMessage = new MimeMessage();
         var from = _configuration["EmailSettings:From"];
 
-        emailMessage.From.Add(new MailboxAddress("Sistema de gestion", from));
+        emailMessage.From.Add(new MailboxAddress("Sistema de Gestión de Bienes Inmuebles", from));
 
         emailMessage.To.Add(new MailboxAddress(correo.Para, correo.Para));
 
