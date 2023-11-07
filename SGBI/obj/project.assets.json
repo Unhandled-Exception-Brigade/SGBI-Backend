@@ -3977,24 +3977,31 @@
     ]
   },
   "packageFolders": {
-    "/Users/deishuu/.nuget/packages/": {}
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/deishuu/Desktop/SGBI-Backend/SGBI/SGBI.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\SGBI-Backend\\SGBI\\SGBI.csproj",
       "projectName": "SGBI",
-      "projectPath": "/Users/deishuu/Desktop/SGBI-Backend/SGBI/SGBI.csproj",
-      "packagesPath": "/Users/deishuu/.nuget/packages/",
-      "outputPath": "/Users/deishuu/Desktop/SGBI-Backend/SGBI/obj/",
+      "projectPath": "C:\\Users\\Administrator\\Desktop\\SGBI-Backend\\SGBI\\SGBI.csproj",
+      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Administrator\\Desktop\\SGBI-Backend\\SGBI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/deishuu/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4089,7 +4096,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.402/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
