@@ -4,7 +4,7 @@ public static class EmailBody
 {
   public static string ChangePasswordRequest(string email, string emailToken)
   {
-    var resetLink = $"https://sgbiapi2023-24846.web.app/resetear?email={email}&code={emailToken}";
+    var resetLink = $"http://localhost:4200/resetear?email={email}&code={emailToken}";
 
     return $@"<!DOCTYPE html>
 <html lang=""en-US"">
@@ -368,7 +368,7 @@ public static class EmailBody
 
     public static string ActivateAccount(string email, string emailToken)
     {
-        var resetLink = $"https://sgbiapi2023-24846.web.app/activar?email={email}&code={emailToken}";
+        var resetLink = $"http://localhost:4200/activar?email={email}&code={emailToken}";
 
         return $@"<!DOCTYPE html>
 <html lang=""en-US"">
@@ -463,8 +463,28 @@ public static class EmailBody
                           font-family: 'Rubik', sans-serif;
                         ""
                       >
-                        Activar su cuenta.
+                        Activar cuenta de SGBI.
                       </h1>
+                      <p
+                        style=""
+                          color: #455056;
+                          font-size: 15px;
+                          line-height: 24px;
+                          margin: 24px 0 0 0;
+                        ""
+                      >
+                      Haz sido agregado al sistema SGBI de la Municipalidad de Atenas.
+                      </p>
+                      <p
+                        style=""
+                          color: #455056;
+                          font-size: 15px;
+                          line-height: 24px;
+                          margin: 0;
+                        ""
+                      >
+                      Para proceder con la activación de la cuenta, presiona el botón 'ACTIVAR CUENTA'.
+                      </p>
                       <span
                         style=""
                           display: inline-block;
