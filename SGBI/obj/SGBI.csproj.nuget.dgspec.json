@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\Desktop\\SGBI-Backend\\SGBI\\SGBI.csproj": {}
+    "/Users/deishuu/Documents/SGBI/SGBI-Backend/SGBI/SGBI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\Desktop\\SGBI-Backend\\SGBI\\SGBI.csproj": {
+    "/Users/deishuu/Documents/SGBI/SGBI-Backend/SGBI/SGBI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\SGBI-Backend\\SGBI\\SGBI.csproj",
+        "projectUniqueName": "/Users/deishuu/Documents/SGBI/SGBI-Backend/SGBI/SGBI.csproj",
         "projectName": "SGBI",
-        "projectPath": "C:\\Users\\Administrator\\Desktop\\SGBI-Backend\\SGBI\\SGBI.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\Desktop\\SGBI-Backend\\SGBI\\obj\\",
+        "projectPath": "/Users/deishuu/Documents/SGBI/SGBI-Backend/SGBI/SGBI.csproj",
+        "packagesPath": "/Users/deishuu/.nuget/packages/",
+        "outputPath": "/Users/deishuu/Documents/SGBI/SGBI-Backend/SGBI/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/deishuu/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -120,7 +114,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.404/RuntimeIdentifierGraph.json"
         }
       }
     }

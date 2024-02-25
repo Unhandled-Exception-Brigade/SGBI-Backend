@@ -32,10 +32,6 @@ public class TarifaController : ControllerBase
             // Use userName as needed
             var tarifaRegistrada = await _tarifaService.RegistrarNuevaTarifaAsync(tarifaDto);
             
-            if (tarifaRegistrada != "Tarifa Creada")
-
-                return BadRequest(new { Message = tarifaRegistrada });
-            
 
             return Ok(new
             {
