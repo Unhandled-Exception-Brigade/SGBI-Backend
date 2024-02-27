@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BbjJTMWhSSPzz72RnkcoIvRL81AadQ1DHdRMMwA3+BsY9Oz24vhJcZHmPpiCvNFwMvh335oSeX9mvoIip3JCPQ==",
+  "dgSpecHash": "Iy38FTjLkmQvb+CeaXZZoZRrdvaHEYbZhrQeQJq8JXyGRjR6P5jMhcGTCb52xmo0FNU8gVFq3/11T2keF6fCnA==",
   "success": true,
-  "projectFilePath": "/Users/deishuu/Documents/SGBI/SGBI-Backend/SGBI/SGBI.csproj",
+  "projectFilePath": "/Users/deishuu/Universidad/Ingenieria Sistemas/SGBI/SGBI-Backend/SGBI/SGBI.csproj",
   "expectedPackageFiles": [
     "/Users/deishuu/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/deishuu/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

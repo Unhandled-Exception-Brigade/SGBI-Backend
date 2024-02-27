@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SGBI.SGBI.API.Data;
@@ -12,11 +11,9 @@ using SGBI.SGBI.API.Data;
 namespace SGBI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231107164141_merge")]
-    partial class merge
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -197,27 +194,90 @@ namespace SGBI.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("Codigo")
+                        .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<DateTime?>("FechaCreacion")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("FechaModificacion")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("UsuarioCreacion")
-                        .HasColumnType("text");
+                    b.Property<int>("TramiteCampoId")
+                        .HasColumnType("integer");
 
-                    b.Property<string>("UsuarioModificacion")
+                    b.HasKey("Id");
+
+                    b.HasIndex("TramiteCampoId");
+
+                    b.ToTable("Tramites");
+                });
+
+            modelBuilder.Entity("SGBI.SBGI.Core.Entities.TramiteCampo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("DuenoActual")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("DuenoAnterior")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("FolioReal")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("ImponibleActual")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("ImponibleAnterior")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("TramiteNombre")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tramites");
+                    b.ToTable("TramiteCampos");
+                });
+
+            modelBuilder.Entity("SGBI.SBGI.Core.Entities.TramiteInformacion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DuenoActual")
+                        .HasColumnType("text");
+
+                    b.Property<string>("DuenoAnterior")
+                        .HasColumnType("text");
+
+                    b.Property<string>("FolioReal")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImponibleActual")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImponibleAnterior")
+                        .HasColumnType("text");
+
+                    b.Property<int>("TramiteId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TramiteNombre")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TramiteId");
+
+                    b.ToTable("TramitesInformacion");
                 });
 
             modelBuilder.Entity("SGBI.SBGI.Core.Entities.Usuario", b =>
@@ -360,6 +420,28 @@ namespace SGBI.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SGBI.SBGI.Core.Entities.Tramite", b =>
+                {
+                    b.HasOne("SGBI.SBGI.Core.Entities.TramiteCampo", "TramiteCampo")
+                        .WithMany()
+                        .HasForeignKey("TramiteCampoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TramiteCampo");
+                });
+
+            modelBuilder.Entity("SGBI.SBGI.Core.Entities.TramiteInformacion", b =>
+                {
+                    b.HasOne("SGBI.SBGI.Core.Entities.Tramite", "Tramite")
+                        .WithMany()
+                        .HasForeignKey("TramiteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tramite");
                 });
 #pragma warning restore 612, 618
         }

@@ -17,7 +17,13 @@ public class ApplicationDbContext : IdentityDbContext<Usuario>
 
 
     public required DbSet<Tarifa> Tarifas { get; set; }
-    public required DbSet<Tramite> Tramites { get; set; }
+
+
+    public DbSet<Tramite> Tramites { get; set; }
+
+    public DbSet<TramiteCampo> TramiteCampos { get; set; }
+
+    public DbSet<TramiteInformacion> TramitesInformacion { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

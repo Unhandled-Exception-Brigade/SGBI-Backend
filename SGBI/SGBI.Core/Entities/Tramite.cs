@@ -1,8 +1,12 @@
 namespace SGBI.SBGI.Core.Entities;
 
-public class Tramite : EntidadBase
+public class Tramite
 {
     public int Id { get; set; }
-    public string? Nombre { get; set; }
-    public string? Descripcion { get; set; }
+
+    public string Nombre { get; set; }
+
+    public string Codigo { get; set; }
+
+    public TramiteCampo TramiteCampo { get; set; }
 }

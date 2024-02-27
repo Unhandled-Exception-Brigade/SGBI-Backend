@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using SGBI.SBGI.Core.Common.Helpers;
 using SGBI.SBGI.Core.Entities;
 using SGBI.SBGI.Core.Interfaces;
 using SGBI.SGBI.API.Data;
@@ -20,7 +19,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Especifica la ubicación del archivo de configuración
-builder.Configuration.AddJsonFile("SGBI.API/appsettings.json", optional: false, reloadOnChange: true);
+builder.Configuration.AddJsonFile("SGBI.API/appsettings.json", false, true);
 
 
 var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnection");
@@ -45,7 +44,7 @@ builder.Services.AddAuthentication(options =>
     {
         options.SaveToken = true;
         options.RequireHttpsMetadata = false;
-        options.TokenValidationParameters = new TokenValidationParameters()
+        options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
             ValidateAudience = true,
@@ -73,6 +72,8 @@ builder.Services.AddScoped<ICuentaService, CuentaService>();
 builder.Services.AddScoped<ICorreoService, CorreoService>();
 builder.Services.AddScoped<IUsuarioActualService, UsuarioActualService>();
 builder.Services.AddScoped<ITarifaService, TarifaService>();
+
+builder.Services.AddScoped<ITramiteService, TramiteService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
@@ -113,4 +114,3 @@ async Task SeedData()
     var seedUsers = new SeedUsuarios(userManager);
     await seedUsers.SeedAsync();
 }
-

@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace SGBI.Migrations
 {
     /// <inheritdoc />
-    public partial class merge : Migration
+    public partial class first : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -78,21 +78,21 @@ namespace SGBI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tramites",
+                name: "TramiteCampos",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Nombre = table.Column<string>(type: "text", nullable: true),
-                    Descripcion = table.Column<string>(type: "text", nullable: true),
-                    FechaCreacion = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    FechaModificacion = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UsuarioCreacion = table.Column<string>(type: "text", nullable: true),
-                    UsuarioModificacion = table.Column<string>(type: "text", nullable: true)
+                    TramiteNombre = table.Column<string>(type: "text", nullable: false),
+                    DuenoAnterior = table.Column<bool>(type: "boolean", nullable: false),
+                    DuenoActual = table.Column<bool>(type: "boolean", nullable: false),
+                    ImponibleAnterior = table.Column<bool>(type: "boolean", nullable: false),
+                    ImponibleActual = table.Column<bool>(type: "boolean", nullable: false),
+                    FolioReal = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tramites", x => x.Id);
+                    table.PrimaryKey("PK_TramiteCampos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -201,6 +201,52 @@ namespace SGBI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Tramites",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Nombre = table.Column<string>(type: "text", nullable: false),
+                    Codigo = table.Column<string>(type: "text", nullable: false),
+                    TramiteCampoId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tramites", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tramites_TramiteCampos_TramiteCampoId",
+                        column: x => x.TramiteCampoId,
+                        principalTable: "TramiteCampos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TramitesInformacion",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    DuenoAnterior = table.Column<string>(type: "text", nullable: true),
+                    DuenoActual = table.Column<string>(type: "text", nullable: true),
+                    ImponibleAnterior = table.Column<string>(type: "text", nullable: true),
+                    ImponibleActual = table.Column<string>(type: "text", nullable: true),
+                    FolioReal = table.Column<string>(type: "text", nullable: true),
+                    TramiteId = table.Column<int>(type: "integer", nullable: false),
+                    TramiteNombre = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TramitesInformacion", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TramitesInformacion_Tramites_TramiteId",
+                        column: x => x.TramiteId,
+                        principalTable: "Tramites",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -237,6 +283,16 @@ namespace SGBI.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tramites_TramiteCampoId",
+                table: "Tramites",
+                column: "TramiteCampoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TramitesInformacion_TramiteId",
+                table: "TramitesInformacion",
+                column: "TramiteId");
         }
 
         /// <inheritdoc />
@@ -261,13 +317,19 @@ namespace SGBI.Migrations
                 name: "Tarifas");
 
             migrationBuilder.DropTable(
-                name: "Tramites");
+                name: "TramitesInformacion");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Tramites");
+
+            migrationBuilder.DropTable(
+                name: "TramiteCampos");
         }
     }
 }

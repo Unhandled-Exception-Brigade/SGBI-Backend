@@ -3982,11 +3982,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/deishuu/Documents/SGBI/SGBI-Backend/SGBI/SGBI.csproj",
+      "projectUniqueName": "/Users/deishuu/Universidad/Ingenieria Sistemas/SGBI/SGBI-Backend/SGBI/SGBI.csproj",
       "projectName": "SGBI",
-      "projectPath": "/Users/deishuu/Documents/SGBI/SGBI-Backend/SGBI/SGBI.csproj",
+      "projectPath": "/Users/deishuu/Universidad/Ingenieria Sistemas/SGBI/SGBI-Backend/SGBI/SGBI.csproj",
       "packagesPath": "/Users/deishuu/.nuget/packages/",
-      "outputPath": "/Users/deishuu/Documents/SGBI/SGBI-Backend/SGBI/obj/",
+      "outputPath": "/Users/deishuu/Universidad/Ingenieria Sistemas/SGBI/SGBI-Backend/SGBI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/deishuu/.nuget/NuGet/NuGet.Config"
