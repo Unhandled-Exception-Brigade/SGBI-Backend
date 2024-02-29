@@ -24,9 +24,8 @@ public class AutoMapperProfiles : Profile
             .ReverseMap();
 
 
-        CreateMap<Tramite, TramiteRegisterDto>()
-            .ReverseMap()
-            .ForMember(x => x.TramiteCampo, options => options.MapFrom(src => src.TramiteCampo))
-            .AfterMap((src, dest) => dest.TramiteCampo.TramiteNombre = dest.Nombre);
+        CreateMap<TramiteRegisterDto, Tramite>()
+            .ForMember(dest => dest.TramiteCampo, opt => opt.MapFrom(src => src.TramiteCampo))
+            .ReverseMap();
     }
 }

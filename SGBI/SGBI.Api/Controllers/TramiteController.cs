@@ -6,7 +6,7 @@ namespace SGBI.SGBI.API.Controllers;
 
 [ApiController]
 [Route("api/tramite")]
-public class TramiteController: ControllerBase
+public class TramiteController : ControllerBase
 {
     private readonly ITramiteService _tramiteService;
 
@@ -14,7 +14,7 @@ public class TramiteController: ControllerBase
     {
         _tramiteService = tramiteService;
     }
-    
+
     //[Authorize(Roles = "Administrador, Jefe")]
     [HttpPost("registrar")] //Endpoint para registrar nuevas tarifas
     public async Task<IActionResult> Registrar([FromBody] TramiteRegisterDto tramiteDto)
@@ -24,28 +24,21 @@ public class TramiteController: ControllerBase
 
         try
         {
-
-            // Use userName as needed
             var tramiteRegistrado = await _tramiteService.RegistraNuevoTramiteAsync(tramiteDto);
-            
+
             if (tramiteRegistrado != "Tramite Creado")
 
                 return BadRequest(new { Message = tramiteRegistrado });
-            
+
 
             return Ok(new
             {
                 Message = tramiteRegistrado
             });
-            
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
-    
-    
-    
-    
 }

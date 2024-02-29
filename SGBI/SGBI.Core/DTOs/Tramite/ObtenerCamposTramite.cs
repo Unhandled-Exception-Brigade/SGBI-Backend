@@ -1,11 +1,7 @@
-namespace SGBI.SBGI.Core.Entities;
+namespace SGBI.SGBI.Core.DTOs.Tramite;
 
-public class TramiteCampo
+public class ObtenerCamposTramite
 {
-    public int Id { get; set; }
-    public string TramiteNombre { get; set; }
-
-
     public bool DuenoAnterior { get; set; }
     public bool DuenoActual { get; set; }
 
