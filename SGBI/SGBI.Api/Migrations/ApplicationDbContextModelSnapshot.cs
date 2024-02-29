@@ -235,10 +235,6 @@ namespace SGBI.Migrations
                     b.Property<bool>("ImponibleAnterior")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("TramiteNombre")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.ToTable("TramiteCampos");

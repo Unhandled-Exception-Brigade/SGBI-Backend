@@ -3,7 +3,6 @@ namespace SGBI.SBGI.Core.Entities;
 public class TramiteCampo
 {
     public int Id { get; set; }
-    public string TramiteNombre { get; set; }
 
 
     public bool DuenoAnterior { get; set; }

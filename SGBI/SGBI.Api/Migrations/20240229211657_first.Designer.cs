@@ -12,7 +12,7 @@ using SGBI.SGBI.API.Data;
 namespace SGBI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240227202305_first")]
+    [Migration("20240229211657_first")]
     partial class first
     {
         /// <inheritdoc />
@@ -237,10 +237,6 @@ namespace SGBI.Migrations
 
                     b.Property<bool>("ImponibleAnterior")
                         .HasColumnType("boolean");
-
-                    b.Property<string>("TramiteNombre")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

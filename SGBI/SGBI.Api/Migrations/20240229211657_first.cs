@@ -83,7 +83,6 @@ namespace SGBI.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    TramiteNombre = table.Column<string>(type: "text", nullable: false),
                     DuenoAnterior = table.Column<bool>(type: "boolean", nullable: false),
                     DuenoActual = table.Column<bool>(type: "boolean", nullable: false),
                     ImponibleAnterior = table.Column<bool>(type: "boolean", nullable: false),
