@@ -1,9 +1,8 @@
-namespace SGBI.SBGI.Core.Entities;
+namespace SGBI.SGBI.Core.Entities;
 
 public class TramiteCampo
 {
     public int Id { get; set; }
-
 
     public bool DuenoAnterior { get; set; }
     public bool DuenoActual { get; set; }

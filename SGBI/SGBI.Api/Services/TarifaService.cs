@@ -1,9 +1,9 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using SGBI.SBGI.Core.DTOs.Tarifa;
-using SGBI.SBGI.Core.Entities;
 using SGBI.SBGI.Core.Interfaces;
 using SGBI.SGBI.API.Data;
+using SGBI.SGBI.Core.DTOs.Tarifa;
+using SGBI.SGBI.Core.Entities;
 
 namespace SGBI.SGBI.API.Services;
 
@@ -30,15 +30,10 @@ public class TarifaService : ITarifaService
             var existingTarifa = await _context.Tarifas
                 .FirstOrDefaultAsync(t => t.FechaModificacion!.Value.Year == currentYear
                                           && t.MontoColones == tarifaRegisterDto.MontoColones);
-            
-            if (existingTarifa != null)
-            {
-                return "Ya existe una tarifa para este año con el mismo monto";
-            }
-            
-            
+
+            if (existingTarifa != null) return "Ya existe una tarifa para este año con el mismo monto";
         }
-        
+
         var tarifaFrontEnd = _mapper.Map<TarifaRegisterDto, Tarifa>(tarifaRegisterDto);
 
         await _context.Tarifas.AddAsync(tarifaFrontEnd);
@@ -46,11 +41,7 @@ public class TarifaService : ITarifaService
         await _context.SaveChangesAsync();
 
         return "Tarifa Creada";
-
-
     }
-
-
 
 
     public async Task<List<TarifaDto>> ListarTarifasAsync()

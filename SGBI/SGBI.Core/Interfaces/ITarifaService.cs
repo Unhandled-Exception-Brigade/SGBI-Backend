@@ -1,4 +1,4 @@
-using SGBI.SBGI.Core.DTOs.Tarifa;
+using SGBI.SGBI.Core.DTOs.Tarifa;
 
 namespace SGBI.SBGI.Core.Interfaces;
 

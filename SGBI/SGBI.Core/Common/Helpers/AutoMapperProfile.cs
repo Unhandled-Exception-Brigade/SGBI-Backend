@@ -1,8 +1,8 @@
 using AutoMapper;
 using SGBI.SBGI.Core.DTOs;
-using SGBI.SBGI.Core.DTOs.Tarifa;
-using SGBI.SBGI.Core.Entities;
+using SGBI.SGBI.Core.DTOs.Tarifa;
 using SGBI.SGBI.Core.DTOs.Tramite;
+using SGBI.SGBI.Core.Entities;
 
 namespace SGBI.SBGI.Core.Common.Helpers;
 

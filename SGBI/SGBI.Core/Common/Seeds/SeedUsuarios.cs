@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using SGBI.SBGI.Core.Common.Helpers;
-using SGBI.SBGI.Core.Entities;
+using SGBI.SGBI.Core.Entities;
 
 namespace SGBI.SGBI.Core.Common.Seeds;
 
@@ -27,7 +27,7 @@ public class SeedUsuarios
                 Activo = true,
                 EmailConfirmed = true
             };
-            
+
             var alvaro = new Usuario
             {
                 Email = "alvaro.herrera.chaves@est.una.ac.cr",
@@ -91,36 +91,34 @@ public class SeedUsuarios
 
             william.PasswordHash = PasswordHasher.HashPassword(nuevaContrasena!);
             await _userManager.UpdateAsync(william);
-            
+
             alvaro.PasswordHash = PasswordHasher.HashPassword(nuevaContrasena1!);
             await _userManager.UpdateAsync(alvaro);
-            
+
             joshua.PasswordHash = PasswordHasher.HashPassword(nuevaContrasena1!);
             await _userManager.UpdateAsync(joshua);
-            
+
             luis.PasswordHash = PasswordHasher.HashPassword(nuevaContrasena1!);
             await _userManager.UpdateAsync(luis);
-            
+
             farlem.PasswordHash = PasswordHasher.HashPassword(nuevaContrasena1!);
             await _userManager.UpdateAsync(farlem);
-            
+
             michael.PasswordHash = PasswordHasher.HashPassword(nuevaContrasena1!);
             await _userManager.UpdateAsync(michael);
-            
-            
+
+
             await _userManager.AddToRoleAsync(william, "Administrador");
-            
+
             await _userManager.AddToRoleAsync(alvaro, "Administrador");
-            
+
             await _userManager.AddToRoleAsync(joshua, "Administrador");
-            
+
             await _userManager.AddToRoleAsync(luis, "Administrador");
-            
+
             await _userManager.AddToRoleAsync(farlem, "Jefe");
-            
+
             await _userManager.AddToRoleAsync(michael, "Usuario");
-            
-            
         }
     }
 }

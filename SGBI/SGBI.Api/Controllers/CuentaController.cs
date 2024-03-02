@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SGBI.SBGI.Core.DTOs;
-using SGBI.SBGI.Core.Entities;
 using SGBI.SBGI.Core.Interfaces;
 
 namespace SGBI.SGBI.API.Controllers;
@@ -29,7 +27,7 @@ public class CuentaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
 
@@ -47,7 +45,7 @@ public class CuentaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
 
@@ -71,7 +69,7 @@ public class CuentaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
 
@@ -90,12 +88,12 @@ public class CuentaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
 
 
-    [Authorize (Roles = "Administrador")]
+    [Authorize(Roles = "Administrador")]
     [HttpPost("actualizar-usuario")]
     public async Task<IActionResult> ActualizarUsuario([FromBody] UsuarioRegisterDto? usuarioRegisterDto)
     {
@@ -113,7 +111,7 @@ public class CuentaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
 
@@ -132,7 +130,7 @@ public class CuentaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
 
@@ -154,7 +152,7 @@ public class CuentaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
 
@@ -170,7 +168,7 @@ public class CuentaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
 }

@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using SGBI.SBGI.Core.Entities;
 using SGBI.SBGI.Core.Interfaces;
 using SGBI.SGBI.API.Data;
 using SGBI.SGBI.API.Services;
 using SGBI.SGBI.Core.Common.Seeds;
+using SGBI.SGBI.Core.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;

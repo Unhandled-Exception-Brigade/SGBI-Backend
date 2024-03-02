@@ -1,9 +1,9 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using SGBI.SBGI.Core.Entities;
 using SGBI.SBGI.Core.Interfaces;
 using SGBI.SGBI.API.Data;
 using SGBI.SGBI.Core.DTOs.Tramite;
+using SGBI.SGBI.Core.Entities;
 
 namespace SGBI.SGBI.API.Services;
 

@@ -1,4 +1,4 @@
-namespace SGBI.SBGI.Core.Entities;
+namespace SGBI.SGBI.Core.Entities;
 
 public class TramiteInformacion
 {

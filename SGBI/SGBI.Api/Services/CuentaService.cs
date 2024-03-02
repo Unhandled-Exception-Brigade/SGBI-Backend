@@ -1,30 +1,26 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using System.Text;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using SGBI.SBGI.Core.Common.Helpers;
 using SGBI.SBGI.Core.DTOs;
-using SGBI.SBGI.Core.Entities;
 using SGBI.SBGI.Core.Interfaces;
 using SGBI.SGBI.API.Models;
+using SGBI.SGBI.Core.Entities;
 
 namespace SGBI.SGBI.API.Services;
 
 public class CuentaService : ICuentaService
 {
-    private readonly UserManager<Usuario> _userManager;
+    private readonly IConfiguration _configuration;
 
 
     private readonly ICorreoService _correoService;
 
-
-    private readonly IConfiguration _configuration;
-
     private readonly IMapper _mapper;
+    private readonly UserManager<Usuario> _userManager;
 
 
     public CuentaService(UserManager<Usuario> userManager, ICorreoService correoService,
@@ -69,21 +65,15 @@ public class CuentaService : ICuentaService
             // Genera claims para el token
             var authClaims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, usuario.UserName!),
-                new Claim(ClaimTypes.Actor, usuario.Nombre!),
+                new(ClaimTypes.Name, usuario.UserName!),
+                new(ClaimTypes.Actor, usuario.Nombre!)
             };
 
             // Agrega los roles del usuario como claims
-            foreach (var role in userRoles)
-            {
-                authClaims.Add(new Claim(ClaimTypes.Role, role));
-            }
-            
-            foreach (var claim in authClaims)
-            {
-                await _userManager.AddClaimAsync(usuario, claim);
-            }
-          
+            foreach (var role in userRoles) authClaims.Add(new Claim(ClaimTypes.Role, role));
+
+            foreach (var claim in authClaims) await _userManager.AddClaimAsync(usuario, claim);
+
 
             var token = GenerateToken.CreateToken(_configuration, authClaims);
 
@@ -91,7 +81,7 @@ public class CuentaService : ICuentaService
 
             _ = int.TryParse(
                 _configuration["JWT:RefreshTokenValidityInDays"],
-                out int refreshTokenValidityInDays);
+                out var refreshTokenValidityInDays);
 
             usuario.RefreshToken = refreshToken;
             usuario.RefreshTokenFechaExpiracion = DateTime.UtcNow.AddDays(refreshTokenValidityInDays);
@@ -123,19 +113,14 @@ public class CuentaService : ICuentaService
             var refreshToken = tokenDto.RefreshToken;
 
             var principal = GenerateToken.GetPrincipalFromExpiredToken(_configuration, accessToken);
-            if (principal == null)
-            {
-                throw new UnauthorizedAccessException("Token inválido");
-            }
+            if (principal == null) throw new UnauthorizedAccessException("Token inválido");
 
-            string username = principal.Identity!.Name!;
+            var username = principal.Identity!.Name!;
 
             var user = await _userManager.FindByNameAsync(username);
 
             if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenFechaExpiracion <= DateTime.Now)
-            {
                 throw new UnauthorizedAccessException("Token de refresco inválido");
-            }
 
             var newAccessToken = GenerateToken.CreateToken(_configuration, principal.Claims.ToList());
             var newRefreshToken = GenerateToken.GenerateRefreshToken();
@@ -152,7 +137,7 @@ public class CuentaService : ICuentaService
         }
         catch (Exception ex)
         {
-            throw new InvalidOperationException( ex.Message, ex);
+            throw new InvalidOperationException(ex.Message, ex);
         }
     }
 
@@ -170,22 +155,14 @@ public class CuentaService : ICuentaService
             if (existingUser != null)
             {
                 if (existingUser.Activo)
-                {
                     return "Usuario ya existe y está marcado como activo.";
-                }
-                else
-                {
-                    return "Usuario ya existe y está marcado como Inactivo.";
-                }
+                return "Usuario ya existe y está marcado como Inactivo.";
             }
 
             // Verifica si el correo ya existe
             var existingEmailUser = await _userManager.FindByEmailAsync(usuarioRegisterDto.Email!);
 
-            if (existingEmailUser != null)
-            {
-                return "Correo ya existe.";
-            }
+            if (existingEmailUser != null) return "Correo ya existe.";
 
             var newUser = new Usuario
             {
@@ -208,47 +185,12 @@ public class CuentaService : ICuentaService
 
                 return "Usuario creado";
             }
-            else
-            {
-                return "Error al registrar el usuario. Verifique los datos.";
-            }
+
+            return "Error al registrar el usuario. Verifique los datos.";
         }
         catch (Exception ex)
         {
             throw new Exception("Error al registrar usuario: " + ex.Message, ex);
-        }
-    }
-
-
-    private async Task EnviarEmailActivacionAsync(string email)
-    {
-        if (string.IsNullOrEmpty(email))
-            throw new ArgumentNullException(nameof(email), "Petición del cliente inválida");
-
-        try
-        {
-            var user = await _userManager.FindByEmailAsync(email);
-
-            if (user == null)
-                throw new UnauthorizedAccessException("Usuario no existe");
-
-
-            //Como estoy utilizando Identity tiene una validez de 24 horas
-            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            user.CambiarContrasenaToken = token;
-            user.CambiarContrasenaFechaExpiracion =
-                DateTime.UtcNow.AddDays(1); //Aca le puse de un dia la activacion de la cuenta
-
-            await _userManager.UpdateAsync(user);
-            var correoModel = new CorreoModel(email, "Active su cuenta - SGBI",
-                EmailBody.ActivateAccount(email, token));
-
-
-            _correoService.EnviarCorreo(correoModel);
-        }
-        catch (Exception ex)
-        {
-            throw new InvalidOperationException( ex.Message, ex);
         }
     }
 
@@ -356,9 +298,7 @@ public class CuentaService : ICuentaService
                 throw new UnauthorizedAccessException("Link inválido");
 
             if (PasswordHasher.VerifyPassword(cambiarContrasenaDto.NuevaContrasena!, usuario.PasswordHash!))
-            {
                 throw new UnauthorizedAccessException("La nueva contraseña no puede ser identica a la anterior");
-            }
 
 
             usuario.PasswordHash = PasswordHasher.HashPassword(cambiarContrasenaDto.NuevaContrasena!);
@@ -378,14 +318,13 @@ public class CuentaService : ICuentaService
         }
         catch (Exception ex)
         {
-            throw new InvalidOperationException( ex.Message, ex);
+            throw new InvalidOperationException(ex.Message, ex);
         }
     }
-    
-    
-     public async Task<string> ActualizarUsuarioAsync(UsuarioRegisterDto? usuarioRegisterDto)
-    {
 
+
+    public async Task<string> ActualizarUsuarioAsync(UsuarioRegisterDto? usuarioRegisterDto)
+    {
         if (string.IsNullOrWhiteSpace(usuarioRegisterDto!.Nombre))
             throw new ArgumentNullException(nameof(usuarioRegisterDto.Nombre), "Nombre vacío");
 
@@ -407,16 +346,16 @@ public class CuentaService : ICuentaService
             if (usuario.Email != usuarioRegisterDto.Email)
             {
                 if (await VerificarCorreoExisteAsync(usuarioRegisterDto.Email))
-                {
                     throw new UnauthorizedAccessException("Correo ya perteneciente a otro usuario");
-                }
                 if (!usuario.Activo)
                 {
                     enviarCorreoPrimeraVez = true;
-                }else
+                }
+                else
                 {
                     var from = _configuration["EmailSettings:From"];
-                    var Email = new CorreoModel(usuarioRegisterDto.Email, "Cambio de correo electrónico - SGBI", EmailBody.ChangeEmailSucess(usuarioRegisterDto.Email));
+                    var Email = new CorreoModel(usuarioRegisterDto.Email, "Cambio de correo electrónico - SGBI",
+                        EmailBody.ChangeEmailSucess(usuarioRegisterDto.Email));
 
                     _correoService.EnviarCorreo(Email);
                 }
@@ -427,24 +366,19 @@ public class CuentaService : ICuentaService
             usuario.SegundoApellido = usuarioRegisterDto.SegundoApellido;
             usuario.Email = usuarioRegisterDto.Email;
             usuario.Activo = (bool)usuarioRegisterDto.Activo!;
-            
-            
+
+
             // Remueve al usuario de todos los roles actuales
             var rolesActuales = await _userManager.GetRolesAsync(usuario);
             await _userManager.RemoveFromRolesAsync(usuario, rolesActuales);
 
-            
+
             await _userManager.AddToRolesAsync(usuario, usuarioRegisterDto.Rol!);
-            
-            
+
 
             await _userManager.UpdateAsync(usuario);
-            
-            if (enviarCorreoPrimeraVez)
-            {
 
-                await EnviarEmailActivacionAsync(usuarioRegisterDto.Email);
-            }
+            if (enviarCorreoPrimeraVez) await EnviarEmailActivacionAsync(usuarioRegisterDto.Email);
 
             return "Usuario Actualizado";
         }
@@ -486,9 +420,41 @@ public class CuentaService : ICuentaService
             throw new Exception("Error al obtener usuarios con roles: " + ex.Message, ex);
         }
     }
-    
-    
-    
+
+
+    private async Task EnviarEmailActivacionAsync(string email)
+    {
+        if (string.IsNullOrEmpty(email))
+            throw new ArgumentNullException(nameof(email), "Petición del cliente inválida");
+
+        try
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            if (user == null)
+                throw new UnauthorizedAccessException("Usuario no existe");
+
+
+            //Como estoy utilizando Identity tiene una validez de 24 horas
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            user.CambiarContrasenaToken = token;
+            user.CambiarContrasenaFechaExpiracion =
+                DateTime.UtcNow.AddDays(1); //Aca le puse de un dia la activacion de la cuenta
+
+            await _userManager.UpdateAsync(user);
+            var correoModel = new CorreoModel(email, "Active su cuenta - SGBI",
+                EmailBody.ActivateAccount(email, token));
+
+
+            _correoService.EnviarCorreo(correoModel);
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException(ex.Message, ex);
+        }
+    }
+
+
     private async Task<bool> VerificarCorreoExisteAsync(string email)
     {
         if (string.IsNullOrEmpty(email)) return false;

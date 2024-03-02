@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SGBI.SBGI.Core.Entities;
+namespace SGBI.SGBI.Core.Entities;
 
 public class Tarifa : EntidadBase
 {

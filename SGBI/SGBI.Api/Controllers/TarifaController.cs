@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SGBI.SBGI.Core.DTOs.Tarifa;
 using SGBI.SBGI.Core.Interfaces;
+using SGBI.SGBI.Core.DTOs.Tarifa;
 
 namespace SGBI.SGBI.API.Controllers;
 
@@ -9,16 +9,16 @@ namespace SGBI.SGBI.API.Controllers;
 [Route("api/tarifa")]
 public class TarifaController : ControllerBase
 {
-    private readonly ITarifaService _tarifaService;
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly ITarifaService _tarifaService;
 
     public TarifaController(ITarifaService tarifaService, IHttpContextAccessor httpContextAccessor)
     {
         _tarifaService = tarifaService;
         _httpContextAccessor = httpContextAccessor;
     }
-    
-    
+
+
     [Authorize(Roles = "Administrador, Jefe")]
     [HttpPost("registrar")] //Endpoint para registrar nuevas tarifas
     public async Task<IActionResult> Registrar([FromBody] TarifaRegisterDto? tarifaDto)
@@ -28,20 +28,18 @@ public class TarifaController : ControllerBase
 
         try
         {
-
             // Use userName as needed
             var tarifaRegistrada = await _tarifaService.RegistrarNuevaTarifaAsync(tarifaDto);
-            
+
 
             return Ok(new
             {
                 Message = tarifaRegistrada
             });
-            
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
 
@@ -57,7 +55,7 @@ public class TarifaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
 
@@ -73,9 +71,10 @@ public class TarifaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
+
     [Authorize(Roles = "Administrador, Jefe")]
     [HttpGet("listar/mantenimiento")] //Endpoint para listar tarifas
     public async Task<IActionResult> ListarMantenimiento()
@@ -88,9 +87,10 @@ public class TarifaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
+
     [Authorize(Roles = "Administrador, Jefe")]
     [HttpGet("listar/servicios-aseo")] //Endpoint para listar tarifas
     public async Task<IActionResult> ListarServiciosAseo()
@@ -103,9 +103,10 @@ public class TarifaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
+
     [Authorize(Roles = "Administrador, Jefe")]
     [HttpGet("listar/servicios-basura")] //Endpoint para listar tarifas
     public async Task<IActionResult> ListarServiciosBasura()
@@ -118,7 +119,7 @@ public class TarifaController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
 }

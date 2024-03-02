@@ -1,4 +1,4 @@
-namespace SGBI.SBGI.Core.DTOs.Tarifa;
+namespace SGBI.SGBI.Core.DTOs.Tarifa;
 
 public class TarifaDto
 {

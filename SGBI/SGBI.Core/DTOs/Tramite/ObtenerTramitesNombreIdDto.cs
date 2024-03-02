@@ -1,6 +1,6 @@
 namespace SGBI.SGBI.Core.DTOs.Tramite;
 
-public class ObtenerTramitesNombreIdDTO
+public class ObtenerTramitesNombreIdDto
 {
     public int Id { get; set; }
 

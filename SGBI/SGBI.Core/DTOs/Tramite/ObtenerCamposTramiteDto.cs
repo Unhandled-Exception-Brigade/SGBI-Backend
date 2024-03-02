@@ -1,6 +1,6 @@
 namespace SGBI.SGBI.Core.DTOs.Tramite;
 
-public class ObtenerCamposTramite
+public class ObtenerCamposTramiteDto
 {
     public bool DuenoAnterior { get; set; }
     public bool DuenoActual { get; set; }

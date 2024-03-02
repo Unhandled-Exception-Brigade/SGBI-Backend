@@ -1,8 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace SGBI.SBGI.Core.Entities;
+namespace SGBI.SGBI.Core.Entities;
 
 public class Usuario : IdentityUser
 {

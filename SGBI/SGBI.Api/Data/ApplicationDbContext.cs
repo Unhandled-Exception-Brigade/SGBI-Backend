@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using SGBI.SBGI.Core.Entities;
 using SGBI.SBGI.Core.Interfaces;
+using SGBI.SGBI.Core.Entities;
 
 namespace SGBI.SGBI.API.Data;
 
