@@ -1,1 +1,14 @@
-.vs
+
+/SGBI-Backend/SGBI/obj
+SGBI-Backend/SGBI/obj/project.assets.json
+SGBI-Backend/SGBI/obj/SGBI.csproj.nuget.dgspec.json
+SGBI-Backend/SGBI/obj/SGBI.csproj.nuget.g.props
+/SGBI-Backend/SGBI/obj/Debug
+SGBI-Backend/SGBI/obj/Debug/net7.0/SGBI.csproj.CoreCompileInputs.cache
+SGBI-Backend/SGBI/obj/Debug/net7.0/SGBI.csproj.AssemblyReference.cache
+SGBI-Backend/SGBI/obj/Debug/net7.0/SGBI.assets.cache
+SGBI-Backend/SGBI/obj/Debug/net7.0/SGBI.AssemblyInfoInputs.cache
+SGBI-Backend/SGBI/obj/Debug/net7.0/SGBI.csproj.FileListAbsolute.txt
+SGBI-Backend/SGBI/obj/Debug/net7.0/SGBI.GeneratedMSBuildEditorConfig.editorconfig
+SGBI-Backend/SGBI/obj/Debug/net7.0/SGBI.genruntimeconfig.cache
+SGBI-Backend/SGBI/obj/Debug/net7.0/SGBI.sourcelink.json
