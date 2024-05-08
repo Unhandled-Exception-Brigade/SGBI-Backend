@@ -173,7 +173,7 @@ namespace SGBI.SGBI.Api.Services
                 var cantidadTramites = await _context.TramitesInformacion
                     .CountAsync(t => t.FechaCreacion >= primerDiaDelMes &&
                                      t.FechaCreacion <= ultimoDiaDelMes &&
-                                     (t.TramiteId == 3 || t.TramiteId == 5 || t.TramiteId == 7) &&
+                                     (t.TramiteId == 3 || t.TramiteId == 5 || t.TramiteId == 7 || t.TramiteId == 8) &&
                                      t.UsuarioCreacion == cedula);
 
                 tramitesPorMes.Add(cantidadTramites);
@@ -191,7 +191,7 @@ namespace SGBI.SGBI.Api.Services
 
             // Obtener el total de trámites para el usuario especificado
             var totalTramitesUsuario = await _context.TramitesInformacion
-                .CountAsync(t => t.UsuarioCreacion == cedula && t.TramiteId >= 1 && t.TramiteId <= 7);
+                .CountAsync(t => t.UsuarioCreacion == cedula && t.TramiteId >= 1 && t.TramiteId <= 9);
 
             // Calcular la cantidad de trámites para los grupos de trámites 1, 2 y 3, 4 y 5, y 6 y 7
             var cantidadTramitesGrupos = new List<int>

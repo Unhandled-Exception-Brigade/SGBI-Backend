@@ -96,12 +96,12 @@ public class ReporteService : IReporteService
 
             if (FechaInicio != null)
             {
-                tramitesInformacionQuery = tramitesInformacionQuery.Where(x => x.FechaIngreso >= FechaInicio);
+                tramitesInformacionQuery = tramitesInformacionQuery.Where(x => x.FechaCreacion >= FechaInicio);
             }
 
             if (FechaFinal != null)
             {
-                tramitesInformacionQuery = tramitesInformacionQuery.Where(x => x.FechaIngreso <= FechaFinal);
+                tramitesInformacionQuery = tramitesInformacionQuery.Where(x => x.FechaCreacion <= FechaFinal);
             }
 
             if(SoloRolSeleccionado != null)
@@ -264,7 +264,7 @@ public class ReporteService : IReporteService
                 var bien = item.bien;
                 var tramite = item.tramite;
 
-                var detalleMes = detalleMeses.FirstOrDefault(d => d.IdMes == tramite.FechaIngreso.Value.Month);
+                var detalleMes = detalleMeses.FirstOrDefault(d => d.IdMes == tramite.FechaCreacion.Value.Month);
                 if (detalleMes != null)
                 {
                     if (bien.EstaSiendoIncluido)
@@ -378,7 +378,7 @@ public class ReporteService : IReporteService
                 var basura = item.basura;
                 var tramite = item.tramite;
 
-                var detalleMes = detalleMeses.FirstOrDefault(d => d.IdMes == tramite.FechaIngreso.Value.Month);
+                var detalleMes = detalleMeses.FirstOrDefault(d => d.IdMes == tramite.FechaCreacion.Value.Month);
                 if (detalleMes != null)
                 {
                     if (basura.EstaSiendoIncluido)
@@ -494,7 +494,7 @@ public class ReporteService : IReporteService
                 var aseo = item.aseo;
                 var tramite = item.tramite;
 
-                var detalleMes = detalleMeses.FirstOrDefault(d => d.IdMes == tramite.FechaIngreso.Value.Month);
+                var detalleMes = detalleMeses.FirstOrDefault(d => d.IdMes == tramite.FechaCreacion.Value.Month);
                 if (detalleMes != null)
                 {
                     if (aseo.EstaSiendoIncluido)
@@ -609,7 +609,7 @@ public class ReporteService : IReporteService
                 var parque = item.parque;
                 var tramite = item.tramite;
 
-                var detalleMes = detalleMeses.FirstOrDefault(d => d.IdMes == tramite.FechaIngreso.Value.Month);
+                var detalleMes = detalleMeses.FirstOrDefault(d => d.IdMes == tramite.FechaCreacion.Value.Month);
                 if (detalleMes != null)
                 {
                     if (parque.EstaSiendoIncluido)
