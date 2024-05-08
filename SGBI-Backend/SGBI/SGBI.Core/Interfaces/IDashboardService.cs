@@ -16,5 +16,6 @@ namespace SGBI.SGBI.Core.Interfaces
         Task<List<int>> InclusionesAnualesAsync(string cedula);
         Task<List<int>> ExclusionesAnualesAsync(string cedula);
         Task<List<double>> PorcentajeTramitesAsync(string cedula);
+        Task<int> TramitesInactivosAsync();
     }
 }

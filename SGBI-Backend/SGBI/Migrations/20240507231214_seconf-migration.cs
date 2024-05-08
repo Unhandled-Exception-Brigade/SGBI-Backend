@@ -5,7 +5,7 @@
 namespace SGBI.Migrations
 {
     /// <inheritdoc />
-    public partial class davo : Migration
+    public partial class seconfmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

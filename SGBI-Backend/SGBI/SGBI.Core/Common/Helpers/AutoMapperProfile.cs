@@ -60,6 +60,8 @@ public class AutoMapperProfiles : Profile
             .ForMember(dest => dest.NombreTramite, opt => opt.MapFrom(src => src.Tramite.Nombre))
             .ForMember(dest => dest.CodigoTramite, opt => opt.MapFrom(src => src.Tramite.Codigo));
 
+        CreateMap<ObtenerInformacionTramitePorIdDTO, TramiteInformacion>().ReverseMap();
+
         CreateMap<BasuraInformacionDto, BasuraInformacion>().ReverseMap();
 
         CreateMap<ExoneracionInformacionDto, ExoneracionInformacion>().ReverseMap();

@@ -114,6 +114,25 @@ namespace SGBI.SGBI.Api.Controllers
             }
         }
 
+        [HttpGet("ObtenerTramitesInactivos")]
+        public async Task<IActionResult> ObtenerTramitesInactivos()
+        {
+
+            try
+            {
+                var tramites = await _dashboardService.TramitesInactivosAsync();
+
+                return Ok(new
+                {
+                    Message = tramites
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { ex.Message, Error = ex.Message });
+            }
+        }
+
         [HttpGet("ObtenerPorcentajeTramitesPorUsuarioEnLaSemana")]
         public async Task<IActionResult> ObtenerPorcentajeTramitesPorUsuarioEnLaSemana(string cedula)
         {

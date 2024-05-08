@@ -477,6 +477,25 @@ public class TramiteController : ControllerBase
         }
     }
 
+    [HttpGet("ObtenerInformacionTramitePorId/{id}")]
+    public async Task<IActionResult> ObtenerInformacionTramitePorId(int id)
+    {
+        try
+        {
+            var tramites = await _tramiteService.ObtenerInformacionTramitePorIdAsync(id);
+
+            if (tramites != null)
+
+                return Ok(tramites);
+
+            return NotFound("No existen tramites");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { ex.Message, Error = ex.Message });
+        }
+    }
+
     [HttpGet("ObtenerTodoTramiteInformacion")]
     public async Task<IActionResult> ObtenerTodoTramiteInformacion()
     {

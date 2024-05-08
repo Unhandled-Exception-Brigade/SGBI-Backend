@@ -669,6 +669,24 @@ public class TramiteService : ITramiteService
         }
     }
 
+    public async Task<ObtenerInformacionTramitePorIdDTO> ObtenerInformacionTramitePorIdAsync(int id)
+    {
+        try
+        {
+            // Asegúrate de incluir la entidad TramiteCampo al cargar los tramites
+            var tramites = await _context.TramitesInformacion.FirstOrDefaultAsync(x => x.Id == id);
+
+            var tramitesDto = _mapper.Map<ObtenerInformacionTramitePorIdDTO>(tramites);
+
+            return tramitesDto;
+        }
+        catch (Exception ex)
+        {
+            // Manejar excepciones específicas según sea necesario
+            throw new Exception("Error al obtener tramite: " + ex.Message, ex);
+        }
+    }
+
     public async Task<List<ObtenerTramiteInformacionConTramiteDTO>> ObtenerTodoTramiteInformacionAsync()
     {
         var tramiteInformacion = await _context.TramitesInformacion.Include(ti => ti.Tramite).ToListAsync();

@@ -48,6 +48,8 @@ public interface ITramiteService
 
     Task<List<ObtenerTramiteInformacionConTramiteDTO>> ObtenerTodoTramiteInformacionAsync();
 
+    Task<ObtenerInformacionTramitePorIdDTO> ObtenerInformacionTramitePorIdAsync(int id);
+
     Task<ExoneracionRegistroDto> ObtenerTramiteExoneracionInformacionPorIdAsync(int id);
 
     Task<ServicioAseoViasRegistroDto> ObtenerTramiteServicioAseoViasInformacionPorIdAsync(int id);

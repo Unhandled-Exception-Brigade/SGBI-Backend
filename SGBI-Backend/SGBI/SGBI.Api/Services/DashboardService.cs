@@ -102,8 +102,11 @@ namespace SGBI.SGBI.Api.Services
 
             return _context.Tramites.Where(t => t.estaActivo == true).CountAsync();
 
+        }
 
-
+        public Task<int> TramitesInactivosAsync()
+        {
+            return _context.Tramites.Where(t => t.estaActivo == false).CountAsync();
         }
 
         public async Task<double> PorcentajeRealizadosPorUsuarioEnLaSemanaAsync(string cedula)
@@ -196,7 +199,8 @@ namespace SGBI.SGBI.Api.Services
                 await _context.TramitesInformacion.CountAsync(t => t.UsuarioCreacion == cedula && t.TramiteId == 1),
                 await _context.TramitesInformacion.CountAsync(t => t.UsuarioCreacion == cedula && (t.TramiteId == 2 || t.TramiteId == 3)),
                 await _context.TramitesInformacion.CountAsync(t => t.UsuarioCreacion == cedula && (t.TramiteId == 4 || t.TramiteId == 5)),
-                await _context.TramitesInformacion.CountAsync(t => t.UsuarioCreacion == cedula && (t.TramiteId == 6 || t.TramiteId == 7))
+                await _context.TramitesInformacion.CountAsync(t => t.UsuarioCreacion == cedula && (t.TramiteId == 6 || t.TramiteId == 7)),
+                await _context.TramitesInformacion.CountAsync(t => t.UsuarioCreacion == cedula && (t.TramiteId == 8 || t.TramiteId == 9)),
             };
 
             // Calcular el porcentaje para cada grupo y agregarlo a la lista

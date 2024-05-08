@@ -13,8 +13,8 @@ using SGBI.SGBI.API.Data;
 namespace SGBI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240429042504_Farida")]
-    partial class Farida
+    [Migration("20240507153214_first-migration")]
+    partial class firstmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

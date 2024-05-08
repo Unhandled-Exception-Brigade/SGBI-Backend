@@ -13,8 +13,8 @@ using SGBI.SGBI.API.Data;
 namespace SGBI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240429030248_davo")]
-    partial class davo
+    [Migration("20240507231214_seconf-migration")]
+    partial class seconfmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
