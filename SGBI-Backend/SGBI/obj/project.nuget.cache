@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g3mOIrZB412mAEvSnjLKd52pI9cCcI4g4U+S6t+ZVu47C7kDy58A49yCXGO8qVIH49+pC7TQqid0Lgb8k+tgOw==",
+  "dgSpecHash": "VdU9NvpVlxMVCMZ9KiJvnOBjC2W6lYlogsUrsUYzWoOsr4I8FDUZlIfwfcijpjy+q9tvqksAp5tN6Ab2E+nQpw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo\\Documents\\GitHub\\Backend-SGBI-Privado\\SGBI-Backend-Alvaro\\SGBI\\SGBI.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\SGBI-Backend\\SGBI-Backend\\SGBI-Backend\\SGBI\\SGBI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

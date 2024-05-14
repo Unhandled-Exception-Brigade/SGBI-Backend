@@ -34,7 +34,7 @@ namespace SGBI.SGBI.Core.Common.Seeds
                 var InclusionBasura = new Tramite
                 {
                     Nombre = "Inclusión de Mantenimiento de Parques y Obras de Ornato",
-                    Codigo = "INCLPO",
+                    Codigo = "INCLMP",
                     Descripcion = "Trámite para hacer la inclusión del servicio de Parques y Obras de Ornato en SGBI",
                     estaActivo = true,
                     esTramitePorDefecto = true,
@@ -47,7 +47,7 @@ namespace SGBI.SGBI.Core.Common.Seeds
                 var ExclusionMantenimientoParquesbrasOrnato = new Tramite
                 {
                     Nombre = "Exclusión de Mantenimiento de Parques y Obras de Ornato",
-                    Codigo = "EXCLPO",
+                    Codigo = "EXCLMP",
                     Descripcion = "Trámite para hacer la exclusión del servicio de Parques y Obras de Ornato en SGBI",
                     estaActivo = true,
                     esTramitePorDefecto = true,
@@ -86,7 +86,7 @@ namespace SGBI.SGBI.Core.Common.Seeds
                 var IncldusionAseoViasSitiosPublicos = new Tramite
                 {
                     Nombre = "Inclusión de aseo de vías y sitios públicos",
-                    Codigo = "INCLASP",
+                    Codigo = "INCLASV",
                     Descripcion = "Tramite para incluir el servicio de vias y sitios públicos de una finca",
                     estaActivo = true,
                     esTramitePorDefecto = true,
@@ -99,7 +99,7 @@ namespace SGBI.SGBI.Core.Common.Seeds
                 var ExclusionAseoViasSitiosPublicos = new Tramite
                 {
                     Nombre = "Exclusión de aseo de vías y sitios públicos",
-                    Codigo = "EXCLASP",
+                    Codigo = "EXCLASV",
                     Descripcion = "Tramite para excluir el servicio de vias y sitios públicos de una finca",
                     estaActivo = true,
                     esTramitePorDefecto = true,
@@ -112,7 +112,7 @@ namespace SGBI.SGBI.Core.Common.Seeds
                 var ExclusionBienesInmuebles = new Tramite
                 {
                     Nombre = "Exclusión de Bienes Inmuebles",
-                    Codigo = "EXCLBI",
+                    Codigo = "EXCL",
                     Descripcion = "Tramite para excluir los bienes inmuebles",
                     estaActivo = true,
                     esTramitePorDefecto = true,
@@ -125,7 +125,7 @@ namespace SGBI.SGBI.Core.Common.Seeds
                 var InclusionBienesInmuebles = new Tramite
                 {
                     Nombre = "Inclusion de Bienes Inmuebles",
-                    Codigo = "INCLBI",
+                    Codigo = "INCL",
                     Descripcion = "Tramite para incluir los bienes inmuebles",
                     estaActivo = true,
                     esTramitePorDefecto = true,

@@ -4654,11 +4654,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\Backend-SGBI-Privado\\SGBI-Backend-Alvaro\\SGBI\\SGBI.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\SGBI-Backend\\SGBI-Backend\\SGBI-Backend\\SGBI\\SGBI.csproj",
       "projectName": "SGBI",
-      "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\Backend-SGBI-Privado\\SGBI-Backend-Alvaro\\SGBI\\SGBI.csproj",
+      "projectPath": "C:\\Users\\Lenovo\\Desktop\\SGBI-Backend\\SGBI-Backend\\SGBI-Backend\\SGBI\\SGBI.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\Backend-SGBI-Privado\\SGBI-Backend-Alvaro\\SGBI\\obj\\",
+      "outputPath": "C:\\Users\\Lenovo\\Desktop\\SGBI-Backend\\SGBI-Backend\\SGBI-Backend\\SGBI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
