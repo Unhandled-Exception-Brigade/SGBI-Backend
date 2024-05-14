@@ -48,7 +48,7 @@ public class TarifaController : ControllerBase
         }
     }
 
-    [Authorize(Roles = "Administrador")]
+    [Authorize(Roles = "Administrador, Jefe")]
     [HttpGet("listar")] //Endpoint para listar tarifas
     public async Task<IActionResult> Listar()
     {

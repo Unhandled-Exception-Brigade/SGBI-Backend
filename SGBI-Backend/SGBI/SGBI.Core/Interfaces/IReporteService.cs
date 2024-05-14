@@ -9,7 +9,7 @@ public interface IReporteService
     public byte[] GenerarPDFDeUsuarios();
     public byte[] GenerarExcelDeUsuarios();
 
-    public Task<ObtenerConteoTramitesDTO> ObtenerConteoTramitesAsync(DateTime? FechaInicio, DateTime? FechaFinal, bool? SoloRolSeleccionado, string? Rol);
+    public Task<ObtenerConteoTramitesDTO> ObtenerConteoTramitesAsync(DateTime? FechaInicio, DateTime? FechaFinal, bool? SoloRolSeleccionado, string? Rol, string? Usuario);
 
 
 

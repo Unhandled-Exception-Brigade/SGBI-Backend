@@ -75,13 +75,23 @@ public class TramiteService : ITramiteService
 
         if (tramite != null)
         {
+            int currentYear = DateTime.UtcNow.Year;
+
+            int counter = await _context.TramitesInformacion
+                .Where(x => x.FechaCreacion.HasValue && x.FechaCreacion.Value.Year == currentYear)
+                .CountAsync();
+
+            counter++;
+
+            tramiteInformacionRegisterDto.NumeroDocumento = "MAT-IBI-DOC-" + counter + "-" + currentYear;
+
             var tramiteInformacion = _mapper.Map<TramiteInformacion>(tramiteInformacionRegisterDto);
 
             _context.Add(tramiteInformacion);
 
             await _context.SaveChangesAsync();
 
-            return "Informacion del tramite registrada";
+            return tramiteInformacionRegisterDto.NumeroDocumento;
         }
 
         return "Tramite inexistente";
@@ -95,6 +105,16 @@ public class TramiteService : ITramiteService
 
         if (tramite != null)
         {
+            int currentYear = DateTime.UtcNow.Year;
+
+            int counter = await _context.TramitesInformacion
+                .Where(x => x.FechaCreacion.HasValue && x.FechaCreacion.Value.Year == currentYear)
+                .CountAsync();
+
+            counter++;
+
+            exoneracionRegistroDto.NumeroDocumento = "MAT-IBI-DOC-" + counter + "-" + currentYear;
+
             var tramiteInformacion = _mapper.Map<TramiteInformacion>(exoneracionRegistroDto);
             _context.Add(tramiteInformacion);
             int FilaCreada = await _context.SaveChangesAsync();
@@ -108,10 +128,6 @@ public class TramiteService : ITramiteService
             if (exoneracionRegistroDto.ImponibleActual != null)
             {
                 exoneracionRegistroDto.ExoneracionInformacionDTO.TramiteInformacionId = TramitePK;
-                //double ImponibleActual = (double)exoneracionRegistroDto.ImponibleActual;
-                //double MontoExonerar = exoneracionRegistroDto.ExoneracionInformacionDTO.MontoExonerar;
-                //double Excedente = Math.Max(0, ImponibleActual - MontoExonerar);
-                //exoneracionRegistroDto.ExoneracionInformacionDTO.Excedente = Excedente;
             }
 
             var ExoneracionInformacion = _mapper.Map<ExoneracionInformacion>(exoneracionRegistroDto.ExoneracionInformacionDTO);
@@ -119,7 +135,7 @@ public class TramiteService : ITramiteService
 
             await _context.SaveChangesAsync();
 
-            return "Información del tramite registrada";
+            return exoneracionRegistroDto.NumeroDocumento;
         }
         else
         {
@@ -134,6 +150,16 @@ public class TramiteService : ITramiteService
 
         if (tramite != null)
         {
+            int currentYear = DateTime.UtcNow.Year;
+
+            int counter = await _context.TramitesInformacion
+                .Where(x => x.FechaCreacion.HasValue && x.FechaCreacion.Value.Year == currentYear)
+                .CountAsync();
+
+            counter++;
+
+            servicioBasuraRegistroDto.NumeroDocumento = "MAT-IBI-DOC-" + counter + "-" + currentYear;
+
             var tramiteInformacion = _mapper.Map<TramiteInformacion>(servicioBasuraRegistroDto);
             _context.Add(tramiteInformacion);
             int FilaCreada = await _context.SaveChangesAsync();
@@ -157,7 +183,7 @@ public class TramiteService : ITramiteService
 
             await _context.SaveChangesAsync();
 
-            return "Información del tramite registrada";
+            return servicioBasuraRegistroDto.NumeroDocumento;
         }
         else
         {
@@ -172,6 +198,16 @@ public class TramiteService : ITramiteService
         int TramitePK = 0;
         if (tramite != null)
         {
+            int currentYear = DateTime.UtcNow.Year;
+
+            int counter = await _context.TramitesInformacion
+                .Where(x => x.FechaCreacion.HasValue && x.FechaCreacion.Value.Year == currentYear)
+                .CountAsync();
+
+            counter++;
+
+            servicioParquesOrnatoRegistroDto.NumeroDocumento = "MAT-IBI-DOC-" + counter + "-" + currentYear;
+
             var tramiteInformacion = _mapper.Map<TramiteInformacion>(servicioParquesOrnatoRegistroDto);
             _context.Add(tramiteInformacion);
             int FilaCreada = await _context.SaveChangesAsync();
@@ -191,7 +227,7 @@ public class TramiteService : ITramiteService
 
             await _context.SaveChangesAsync();
 
-            return "Información del tramite registrada";
+            return servicioParquesOrnatoRegistroDto.NumeroDocumento;
         }
         else
         {
@@ -206,6 +242,16 @@ public class TramiteService : ITramiteService
         int TramitePK = 0;
         if (tramite != null)
         {
+            int currentYear = DateTime.UtcNow.Year;
+
+            int counter = await _context.TramitesInformacion
+                .Where(x => x.FechaCreacion.HasValue && x.FechaCreacion.Value.Year == currentYear)
+                .CountAsync();
+
+            counter++;
+
+            servicioAseoViasRegistroDto.NumeroDocumento = "MAT-IBI-DOC-" + counter + "-" + currentYear;
+
             var tramiteInformacion = _mapper.Map<TramiteInformacion>(servicioAseoViasRegistroDto);
             _context.Add(tramiteInformacion);
             int FilaCreada = await _context.SaveChangesAsync();
@@ -219,17 +265,13 @@ public class TramiteService : ITramiteService
             {
                 servicioAseoViasRegistroDto.AseoInformacionDTO.TramiteInformacionId = TramitePK;
 
-                //servicioAseoViasRegistroDto.AseoInformacionDTO.MontoTotal =
-                //servicioAseoViasRegistroDto.AseoInformacionDTO.Tarifa *
-                //servicioAseoViasRegistroDto.AseoInformacionDTO.Metros;
-
                 var AseoInformacion = _mapper.Map<AseoInformacion>(servicioAseoViasRegistroDto.AseoInformacionDTO);
                 _context.Add(AseoInformacion);
             }
 
             await _context.SaveChangesAsync();
 
-            return "Información del tramite registrada";
+            return servicioAseoViasRegistroDto.NumeroDocumento;
         }
         else
         {
@@ -244,6 +286,16 @@ public class TramiteService : ITramiteService
         int TramitePK = 0;
         if (tramite != null)
         {
+            int currentYear = DateTime.UtcNow.Year;
+
+            int counter = await _context.TramitesInformacion
+                .Where(x => x.FechaCreacion.HasValue && x.FechaCreacion.Value.Year == currentYear)
+                .CountAsync();
+
+            counter++;
+
+            bienesImueblesRegistroDto.NumeroDocumento = "MAT-IBI-DOC-"+ counter +"-"+ currentYear;
+
             var tramiteInformacion = _mapper.Map<TramiteInformacion>(bienesImueblesRegistroDto);
             _context.Add(tramiteInformacion);
             int FilaCreada = await _context.SaveChangesAsync();
@@ -263,7 +315,7 @@ public class TramiteService : ITramiteService
 
             await _context.SaveChangesAsync();
 
-            return "Información del tramite registrada";
+            return bienesImueblesRegistroDto.NumeroDocumento;
         }
         else
         {
@@ -357,6 +409,8 @@ public class TramiteService : ITramiteService
 
         if (tramiteInformacionExistente != null)
         {
+            tramiteInformacionActualizacionDTO.NumeroDocumento = tramiteInformacionExistente.NumeroDocumento;
+
             _mapper.Map(tramiteInformacionActualizacionDTO, tramiteInformacionExistente);
 
             await _context.SaveChangesAsync();
@@ -390,6 +444,7 @@ public class TramiteService : ITramiteService
 
                 basuraInformacionDto.TramiteInformacionId = id;
                 servicioBasuraRegistroDTO.TramiteId = tramiteInformacionExistente.TramiteId;
+                servicioBasuraRegistroDTO.NumeroDocumento = tramiteInformacionExistente.NumeroDocumento;
 
                 if (tramiteInformacionExistente != null)
                     _mapper.Map(servicioBasuraRegistroDTO, tramiteInformacionExistente);
@@ -436,6 +491,7 @@ public class TramiteService : ITramiteService
 
                 exoneracionInformacionDTO.TramiteInformacionId = id;
                 exoneracionRegistroDTO.TramiteId = tramiteInformacionExistente.TramiteId;
+                exoneracionRegistroDTO.NumeroDocumento = tramiteInformacionExistente.NumeroDocumento;
 
                 if (tramiteInformacionExistente != null)
                     _mapper.Map(exoneracionRegistroDTO, tramiteInformacionExistente);
@@ -482,6 +538,7 @@ public class TramiteService : ITramiteService
 
                 aseoInformacionDTO.TramiteInformacionId = id;
                 servicioAseoViasRegistroDTO.TramiteId = tramiteInformacionExistente.TramiteId;
+                servicioAseoViasRegistroDTO.NumeroDocumento = tramiteInformacionExistente.NumeroDocumento;
 
                 if (tramiteInformacionExistente != null)
                     _mapper.Map(servicioAseoViasRegistroDTO, tramiteInformacionExistente);
@@ -528,6 +585,7 @@ public class TramiteService : ITramiteService
 
                 parqueInformacionDTO.TramiteInformacionId = id;
                 servicioParquesOrnatoRegistroDTO.TramiteId = tramiteInformacionExistente.TramiteId;
+                servicioParquesOrnatoRegistroDTO.NumeroDocumento = tramiteInformacionExistente.NumeroDocumento;
 
                 if (tramiteInformacionExistente != null)
                     _mapper.Map(servicioParquesOrnatoRegistroDTO, tramiteInformacionExistente);
@@ -574,6 +632,7 @@ public class TramiteService : ITramiteService
 
                 bienesInmueblesInformacionDTO.TramiteInformacionId = id;
                 bienesInmueblesRegistroDTO.TramiteId = tramiteInformacionExistente.TramiteId;
+                bienesInmueblesRegistroDTO.NumeroDocumento = tramiteInformacionExistente.NumeroDocumento;
 
                 if (tramiteInformacionExistente != null)
                     _mapper.Map(bienesInmueblesRegistroDTO, tramiteInformacionExistente);
@@ -608,6 +667,7 @@ public class TramiteService : ITramiteService
 
             if (tramiteExistente != null)
             {
+
                 _mapper.Map(tramiteRegisterDto, tramiteExistente);
 
                 // Actualizar los campos del TramiteCampo existente si es necesario

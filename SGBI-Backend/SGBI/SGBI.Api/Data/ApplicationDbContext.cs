@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SGBI.SBGI.Core.Entities;
 using SGBI.SBGI.Core.Interfaces;
+using SGBI.SGBI.Core.Entities;
 
 namespace SGBI.SGBI.API.Data;
 
@@ -25,7 +26,7 @@ public class ApplicationDbContext : IdentityDbContext<Usuario>
     public DbSet<BasuraInformacion> BasuraInformacion { get; set; }
     public DbSet<ExoneracionInformacion> ExoneracionesInformacion { get; set; }
     public DbSet<ParqueInformacion> ParquesInformacion { get; set; }
-
+    public DbSet<CodigoDepartamento> CodigoDepartamentos { get; set; }
     public DbSet<BienesInmueblesInformacion> BienesInmueblesInformacion { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

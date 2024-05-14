@@ -21,7 +21,7 @@ public class TramiteController : ControllerBase
         _tramiteService = tramiteService;
     }
 
-    [Authorize(Roles = "Administrador, Jefe")]
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpPost("registrar")] //Endpoint para registrar nuevas tarifas
     public async Task<IActionResult> Registrar([FromBody] TramiteRegisterDto tramiteDto)
     {
@@ -254,8 +254,7 @@ public class TramiteController : ControllerBase
             return StatusCode(500, new { ex.Message, Error = ex.Message });
         }
     }
-
-    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
+    
     [HttpGet("ObtenerTramiteNombreyId")]
     public async Task<ActionResult<List<ObtenerTramitesNombreIdDTO>>> ObtenerTramiteNombreId()
     {

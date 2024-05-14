@@ -9,6 +9,7 @@ using SGBI.SGBI.Api.Services;
 using SGBI.SGBI.API.Data;
 using SGBI.SGBI.API.Services;
 using SGBI.SGBI.Core.Common.Seeds;
+using SGBI.SGBI.Core.Entities;
 using SGBI.SGBI.Core.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,7 +22,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Especifica la ubicación del archivo de configuración
-builder.Configuration.AddJsonFile("SGBI.API/appsettings.json", false, true);
+builder.Configuration.AddJsonFile("SGBI.Api/appsettings.json", false, true);
 
 
 var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnection");
@@ -77,6 +78,7 @@ builder.Services.AddScoped<ITarifaService, TarifaService>();
 builder.Services.AddScoped<IReporteService, ReporteService>();
 builder.Services.AddScoped<ITramiteService, TramiteService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
+builder.Services.AddScoped<ICodigoDepartamentoService, CodigoDepartamentoService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
@@ -122,4 +124,6 @@ async Task SeedData()
     var seedTramites = new SeedTramites(context);
     await seedTramites.SeedAsync();
 
+    var seedCodigos = new SeedCodigoDepartamento(context);
+    await seedCodigos.SeedAsync();
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SGBI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55acaf889cc8c44b5780a40e22df89b9d18337ff")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb5bf953d72c50fb9c02c3f7416c2d8ad60ced91")]
 [assembly: System.Reflection.AssemblyProductAttribute("SGBI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SGBI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

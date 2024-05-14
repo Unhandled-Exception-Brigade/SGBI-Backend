@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenovo\\Documents\\GitHub\\Backend-SGBI-Privado\\SGBI-Backend-Alvaro\\SGBI\\SGBI.csproj": {}
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\Backend-SGBI-Privado\\SGBI-Backend\\SGBI\\SGBI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenovo\\Documents\\GitHub\\Backend-SGBI-Privado\\SGBI-Backend-Alvaro\\SGBI\\SGBI.csproj": {
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\Backend-SGBI-Privado\\SGBI-Backend\\SGBI\\SGBI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\Backend-SGBI-Privado\\SGBI-Backend-Alvaro\\SGBI\\SGBI.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\Backend-SGBI-Privado\\SGBI-Backend\\SGBI\\SGBI.csproj",
         "projectName": "SGBI",
-        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\Backend-SGBI-Privado\\SGBI-Backend-Alvaro\\SGBI\\SGBI.csproj",
+        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\Backend-SGBI-Privado\\SGBI-Backend\\SGBI\\SGBI.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\Backend-SGBI-Privado\\SGBI-Backend-Alvaro\\SGBI\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\Backend-SGBI-Privado\\SGBI-Backend\\SGBI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",

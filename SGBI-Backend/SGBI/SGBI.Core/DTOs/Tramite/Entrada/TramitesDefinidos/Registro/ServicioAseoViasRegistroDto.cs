@@ -7,10 +7,13 @@ namespace SGBI.SGBI.Core.DTOs.Tramite.Entrada.TramitesDefinidos.Registro
         public int TramiteId { get; set; }
         public string? CodigoDepartamento { get; set; }
         public DateTime? FechaIngreso { get; set; }
+        public string? DuenoAnterior { get; set; }
         public string? DuenoActual { get; set; }
         public List<string>? FolioReal { get; set; }
         public double? ImponibleActual { get; set; }
+        public double? ImponibleAnterior { get; set; }
         public string? Descripcion { get; set; }
+        public string? NumeroDocumento { get; set; }
 
         public AseoInformacionDto? AseoInformacionDTO { get; set; }
     }

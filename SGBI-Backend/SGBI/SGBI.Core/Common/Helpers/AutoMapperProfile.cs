@@ -2,12 +2,15 @@ using AutoMapper;
 using SGBI.SBGI.Core.DTOs;
 using SGBI.SBGI.Core.DTOs.Tarifa;
 using SGBI.SBGI.Core.Entities;
+using SGBI.SGBI.Core.DTOs.CodigoDepartamento.Entrada;
+using SGBI.SGBI.Core.DTOs.CodigoDepartamento.Salida;
 using SGBI.SGBI.Core.DTOs.Tarifa;
 using SGBI.SGBI.Core.DTOs.Tramite;
 using SGBI.SGBI.Core.DTOs.Tramite.Entrada.TramitesDefinidos.Registro;
 using SGBI.SGBI.Core.DTOs.Tramite.Entrada.TramitesDefinidos.TablasInformacion;
 using SGBI.SGBI.Core.DTOs.Tramite.Entrada.TramitesGenerados;
 using SGBI.SGBI.Core.DTOs.Tramite.Salida;
+using SGBI.SGBI.Core.Entities;
 
 namespace SGBI.SBGI.Core.Common.Helpers;
 
@@ -86,6 +89,15 @@ public class AutoMapperProfiles : Profile
 
         CreateMap<ObtenerInformacionTramiteUnico, Tramite>().ReverseMap();
 
-        
+        CreateMap<AgregarCodigoDTO, CodigoDepartamento>().ReverseMap();
+
+        CreateMap<ObtenerTodosCodigosDTO, CodigoDepartamento>().ReverseMap();
+
+        CreateMap<ObtenerUnCodigoDTO, CodigoDepartamento>().ReverseMap();
+
+        CreateMap<EditarCodigoDepartamentoDTO, CodigoDepartamento>().ReverseMap();
+
+        CreateMap<ObtenerDescripcionCodigo, CodigoDepartamento>().ReverseMap();
+
     }
 }

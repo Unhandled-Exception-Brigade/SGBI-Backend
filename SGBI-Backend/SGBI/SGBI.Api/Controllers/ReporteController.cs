@@ -50,11 +50,11 @@ public class ReporteController : ControllerBase
 
 
     [HttpGet("ConteoDeTramitePorRangoDeFechas")]
-    public async Task<IActionResult> ConteoDeTramitePorRangoDeFechas([FromQuery] DateTime? FechaInicio, DateTime? FechaFinal, bool? SoloRolSeleccionado, string? Rol)
+    public async Task<IActionResult> ConteoDeTramitePorRangoDeFechas([FromQuery] DateTime? FechaInicio, DateTime? FechaFinal, bool? SoloRolSeleccionado, string? Rol, string? Usuario)
     {
         try
         {
-            var ConteoTramites = await _reporteService.ObtenerConteoTramitesAsync(FechaInicio, FechaFinal, SoloRolSeleccionado, Rol);
+            var ConteoTramites = await _reporteService.ObtenerConteoTramitesAsync(FechaInicio, FechaFinal, SoloRolSeleccionado, Rol, Usuario);
 
             return Ok(ConteoTramites);
         }

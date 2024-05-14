@@ -84,7 +84,7 @@ public class ReporteService : IReporteService
             return excelPackage.GetAsByteArray();
         }
     }
-    public async Task<ObtenerConteoTramitesDTO> ObtenerConteoTramitesAsync(DateTime? FechaInicio, DateTime? FechaFinal, bool? SoloRolSeleccionado, string? Rol)
+    public async Task<ObtenerConteoTramitesDTO> ObtenerConteoTramitesAsync(DateTime? FechaInicio, DateTime? FechaFinal, bool? SoloRolSeleccionado, string? Rol, string? Usuario)
     {
         try
         {
@@ -104,7 +104,7 @@ public class ReporteService : IReporteService
                 tramitesInformacionQuery = tramitesInformacionQuery.Where(x => x.FechaCreacion <= FechaFinal);
             }
 
-            if(SoloRolSeleccionado != null)
+            if(SoloRolSeleccionado != null && Usuario == null)
             {
 
                 string FiltroRol = "DEPURACION";
@@ -141,6 +141,11 @@ public class ReporteService : IReporteService
                     .Where(tuur => tuur.Role.NormalizedName != FiltroRol)
                     .Select(tuur => tuur.Tramite);
                 }
+            }
+            
+            if (Usuario != null)
+            {
+                tramitesInformacionQuery = _context.TramitesInformacion.OrderBy(x => x.UsuarioCreacion == Usuario);
             }
 
             int totalTramitesCount = await tramitesQuery.CountAsync();
@@ -203,7 +208,6 @@ public class ReporteService : IReporteService
                 InclusionAnosAnteriores = 0.000,
                 ExclusionAnoActual = 0.000,
                 ExclusionAnosAnteriores = 0.000
-               
             });
         }
 
@@ -298,6 +302,7 @@ public class ReporteService : IReporteService
             }
 
         }
+
         catch (Exception e)
         {
             throw new Exception("Ha ocurrido un error: " + e.Message, e);

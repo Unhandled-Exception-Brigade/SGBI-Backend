@@ -13,6 +13,7 @@ namespace SGBI.SGBI.Core.DTOs.Tramite.Entrada.TramitesGenerados
         public List<string>? FolioReal { get; set; }
         public string? FincaMadre { get; set; }
         public string Descripcion { get; set; }
+        public string? NumeroDocumento { get; set; }
 
     }
 }
