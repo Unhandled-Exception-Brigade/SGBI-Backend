@@ -207,7 +207,7 @@ public class ReporteService : IReporteService
                       tramite.FechaCreacion.Value.Year == (mes != null ? mes.Value.Year : tramite.FechaCreacion.Value.Year)
                 select new ReporteExoneracionDTO
                 {
-                    Fecha = tramite.FechaCreacion,
+                    FechaCreacion = tramite.FechaCreacion,
                     DuenoActual = tramite.DuenoActual,
                     MontoExonerarAnoAnteriores = exoneracion.MontoExonerarAnoAnteriores,
                     MontoExonerarAnoActual = exoneracion.MontoExonerarAnoActual

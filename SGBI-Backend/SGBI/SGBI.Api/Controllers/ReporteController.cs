@@ -82,7 +82,7 @@ public class ReporteController : ControllerBase
     }
 
     [HttpGet("ReporteExoneracion")]
-    public async Task<IActionResult> ReporteExoneracion(DateTime? mes)
+    public async Task<IActionResult> ReporteExoneracion([FromQuery] DateTime? mes)
     {
         try
         {
