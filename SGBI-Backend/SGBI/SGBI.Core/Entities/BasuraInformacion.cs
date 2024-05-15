@@ -9,7 +9,6 @@ public class BasuraInformacion
     public double MontoAnoActual{ get; set; }
     public double MontoAnoAnteriores { get; set; }
     public bool EstaSiendoIncluido { get; set; }
-    public string? NumeroDocumento { get; set; }
     public TramiteInformacion TramiteInformacion { get; set; }
     public int TramiteInformacionId { get; set; }
 
