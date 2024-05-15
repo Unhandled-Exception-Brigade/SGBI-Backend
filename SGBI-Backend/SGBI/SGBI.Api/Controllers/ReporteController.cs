@@ -81,6 +81,21 @@ public class ReporteController : ControllerBase
 
     }
 
+    [HttpGet("ReporteExoneracion")]
+    public async Task<IActionResult> ReporteExoneracion(DateTime? mes)
+    {
+        try
+        {
+            var reporte = await _reporteService.ReporteExoneracionAsync(mes);
+
+            return Ok(reporte);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+        }
+    }
+
     [HttpGet("ObtenerReporteContaduriaBasuraResidencial")]
     public async Task<IActionResult> ObtenerReporteContaduriaBasuraResidencial([FromQuery] int Ano, bool? SoloRolSeleccionado, string? Rol)
     {

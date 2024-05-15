@@ -11,6 +11,7 @@ using OfficeOpenXml;
 using SGBI.SGBI.Core.DTOs.Tramite;
 using SGBI.SGBI.Core.DTOs.Reporte;
 using System.Globalization;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace SGBI.SGBI.API.Services;
 
@@ -193,6 +194,34 @@ public class ReporteService : IReporteService
             throw;
         }
     }
+
+    public async Task<List<ReporteExoneracionDTO>> ReporteExoneracionAsync(DateTime? mes)
+    {
+        try
+        {
+            var reporte = await (from tramite in _context.TramitesInformacion
+                join exoneracion in _context.ExoneracionesInformacion
+                    on tramite.Id equals exoneracion.TramiteInformacionId
+                where tramite.FechaCreacion != null && 
+                      tramite.FechaCreacion.Value.Month == (mes != null ? mes.Value.Month : tramite.FechaCreacion.Value.Month) &&
+                      tramite.FechaCreacion.Value.Year == (mes != null ? mes.Value.Year : tramite.FechaCreacion.Value.Year)
+                select new ReporteExoneracionDTO
+                {
+                    Fecha = tramite.FechaCreacion,
+                    DuenoActual = tramite.DuenoActual,
+                    MontoExonerarAnoAnteriores = exoneracion.MontoExonerarAnoAnteriores,
+                    MontoExonerarAnoActual = exoneracion.MontoExonerarAnoActual
+                }).ToListAsync();
+
+            return reporte;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
 
     public async Task<List<DetalleMesReporteContaduriaDTO>> ObtenerReporteContaduriaBienesInmueblesAsync(int Ano, bool? SoloRolSeleccionado, string? Rol)
     {
