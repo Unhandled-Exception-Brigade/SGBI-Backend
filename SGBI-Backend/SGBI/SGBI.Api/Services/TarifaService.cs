@@ -5,6 +5,7 @@ using SGBI.SBGI.Core.Entities;
 using SGBI.SBGI.Core.Interfaces;
 using SGBI.SGBI.API.Data;
 using SGBI.SGBI.Core.DTOs.Tarifa;
+using SGBI.SGBI.Core.Interfaces;
 
 namespace SGBI.SGBI.API.Services;
 

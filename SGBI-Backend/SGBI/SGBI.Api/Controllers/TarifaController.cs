@@ -5,6 +5,7 @@ using SGBI.SBGI.Core.Interfaces;
 using SGBI.SGBI.API.Services;
 using SGBI.SGBI.Core.DTOs.Tarifa;
 using SGBI.SGBI.Core.DTOs.Tramite;
+using SGBI.SGBI.Core.Interfaces;
 
 namespace SGBI.SGBI.API.Controllers;
 

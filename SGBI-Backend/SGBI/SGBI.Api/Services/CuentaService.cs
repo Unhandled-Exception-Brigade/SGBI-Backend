@@ -492,11 +492,8 @@ public class CuentaService : ICuentaService
         try
         {
             var usuarios = await _userManager.Users.ToListAsync();
-            
-            // Creamos una lista para almacenar las cédulas
-            List<string> cedulas = new List<string>();
+            var cedulas = new List<string>();
 
-            // Iteramos sobre cada usuario y agregamos su cédula a la lista
             foreach (var usuario in usuarios)
             {
                 cedulas.Add(usuario.UserName);

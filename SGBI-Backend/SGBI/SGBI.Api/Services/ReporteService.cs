@@ -93,7 +93,6 @@ public class ReporteService : IReporteService
 
             IQueryable<TramiteInformacion> tramitesInformacionQuery = _context.TramitesInformacion.OrderBy(x => x.Id);
             IQueryable<Tramite> tramitesQuery = _context.Tramites.OrderBy(x => x.Id);
-            
 
             if (FechaInicio != null)
             {
@@ -146,7 +145,7 @@ public class ReporteService : IReporteService
             
             if (Usuario != null)
             {
-                tramitesInformacionQuery = _context.TramitesInformacion.OrderBy(x => x.UsuarioCreacion == Usuario);
+                tramitesInformacionQuery = _context.TramitesInformacion.Where(x => x.UsuarioCreacion.Equals(Usuario));
             }
 
             int totalTramitesCount = await tramitesQuery.CountAsync();

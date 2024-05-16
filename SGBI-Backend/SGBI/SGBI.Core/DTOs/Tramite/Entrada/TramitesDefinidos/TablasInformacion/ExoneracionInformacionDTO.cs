@@ -4,8 +4,8 @@ public class ExoneracionInformacionDto
 {
     public int TramiteInformacionId { get; set; }
     public int CantidadTrimestre { get; set; }
-    public double? MontoExonerar { get; set; }
-    public double? Excedente { get; set; } = 0;
+    //public double? MontoExonerar { get; set; }
+    //public double? Excedente { get; set; } = 0;
     public double? MontoExonerarAnoAnteriores { get; set; }
     public double? MontoExonerarAnoActual { get; set; }
 }
