@@ -23,4 +23,6 @@ public interface ICuentaService
 
     //Obtener todos los usuarios
     Task<List<UsuarioRegisterDto>> ObtenerTodosUsuariosAsync();
+
+    Task<List<String>> ObtenerCedulaUsuariosAsync();
 }

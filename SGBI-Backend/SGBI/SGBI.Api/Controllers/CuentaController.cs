@@ -173,4 +173,20 @@ public class CuentaController : ControllerBase
             return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
         }
     }
+
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
+    [HttpGet("ObtenerCedulaUsuarios")]
+    public async Task<IActionResult> ObtenerCedulaUsuarios()
+    {
+        try
+        {
+            var usuarios = await _cuentaService.ObtenerCedulaUsuariosAsync();
+
+            return Ok(usuarios);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { Message = ex.Message, Error = ex.Message });
+        }
+    }
 }

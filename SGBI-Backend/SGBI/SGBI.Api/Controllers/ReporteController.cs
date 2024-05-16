@@ -48,7 +48,7 @@ public class ReporteController : ControllerBase
         }
     }
 
-
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ConteoDeTramitePorRangoDeFechas")]
     public async Task<IActionResult> ConteoDeTramitePorRangoDeFechas([FromQuery] DateTime? FechaInicio, DateTime? FechaFinal, bool? SoloRolSeleccionado, string? Rol, string? Usuario)
     {
@@ -64,6 +64,7 @@ public class ReporteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerReporteContaduriaBienesInmuebles")]
     public async Task<IActionResult> ObtenerReporteContaduriaBienesInmuebles([FromQuery] int Ano, bool? SoloRolSeleccionado, string? Rol)
     {
@@ -81,6 +82,7 @@ public class ReporteController : ControllerBase
 
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ReporteExoneracion")]
     public async Task<IActionResult> ReporteExoneracion([FromQuery] DateTime? mes)
     {
@@ -96,6 +98,7 @@ public class ReporteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerReporteContaduriaBasuraResidencial")]
     public async Task<IActionResult> ObtenerReporteContaduriaBasuraResidencial([FromQuery] int Ano, bool? SoloRolSeleccionado, string? Rol)
     {
@@ -113,6 +116,7 @@ public class ReporteController : ControllerBase
 
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerReporteContaduriaAseoVias")]
     public async Task<IActionResult> ObtenerReporteContaduriaAseoVias([FromQuery] int Ano, bool? SoloRolSeleccionado, string? Rol)
     {
@@ -130,6 +134,7 @@ public class ReporteController : ControllerBase
 
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerReporteContaduriaMantenimientoParque")]
     public async Task<IActionResult> ObtenerReporteContaduriaMantenimientoParque([FromQuery] int Ano, bool? SoloRolSeleccionado, string? Rol)
     {

@@ -486,9 +486,31 @@ public class CuentaService : ICuentaService
             throw new Exception("Error al obtener usuarios con roles: " + ex.Message, ex);
         }
     }
-    
-    
-    
+
+    public async Task<List<string>> ObtenerCedulaUsuariosAsync()
+    {
+        try
+        {
+            var usuarios = await _userManager.Users.ToListAsync();
+            
+            // Creamos una lista para almacenar las cédulas
+            List<string> cedulas = new List<string>();
+
+            // Iteramos sobre cada usuario y agregamos su cédula a la lista
+            foreach (var usuario in usuarios)
+            {
+                cedulas.Add(usuario.UserName);
+            }
+
+            return cedulas;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error al obtener cedulas: " + ex.Message, ex);
+        }
+    }
+
+
     private async Task<bool> VerificarCorreoExisteAsync(string email)
     {
         if (string.IsNullOrEmpty(email)) return false;

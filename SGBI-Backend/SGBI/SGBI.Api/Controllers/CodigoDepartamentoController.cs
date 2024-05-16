@@ -49,7 +49,7 @@ namespace SGBI.SGBI.Api.Controllers
             }
         }
 
-        //[Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
+        [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
         [HttpPost("actualizar")]
         public async Task<IActionResult> ActualizarCodigoDepartamento(int id, [FromBody] EditarCodigoDepartamentoDTO? editarCodigoDepartamentoDTO)
         {
@@ -109,6 +109,7 @@ namespace SGBI.SGBI.Api.Controllers
 
         }
 
+        [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
         [HttpGet("obtenerUnCodigo")]
         public async Task<IActionResult> ObtenerUnCodigo(int id)
         {

@@ -140,6 +140,7 @@ public class TramiteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerInformacionTramiteUnico")]
     public async Task<IActionResult> ObtenerInformacionTramiteUnico([FromQuery] int id)
     {
@@ -255,6 +256,7 @@ public class TramiteController : ControllerBase
         }
     }
     
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerTramiteNombreyId")]
     public async Task<ActionResult<List<ObtenerTramitesNombreIdDTO>>> ObtenerTramiteNombreId()
     {
@@ -272,7 +274,7 @@ public class TramiteController : ControllerBase
         }
     }
 
-    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
+    [Authorize(Roles = "Administrador, Jefe")]
     [HttpPost("CambiarEstadoTramite")]
     public async Task<IActionResult> CambiarEstadoTramite([FromBody] CambiarEstadoTramiteDTO cambiarEstadoTramiteDTO)
     {
@@ -291,7 +293,7 @@ public class TramiteController : ControllerBase
         }
     }
 
-    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
+    [Authorize(Roles = "Administrador, Jefe")]
     [HttpPost("ActualizarCamposTramite")]
     public async Task<IActionResult> ActualizarCamposDelTramite(int id,
         [FromBody] TramiteCampoRegisterDto tramiteCampoRegisterDto)
@@ -311,7 +313,7 @@ public class TramiteController : ControllerBase
         }
     }
 
-
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpPost("ActualizarTramiteInformacion/{id}")]
     public async Task<IActionResult> ActualizarInformacionDelTramite(int id,
         [FromBody] TramiteInformacionActualizacionDTO tramiteInformacionActualizacionDTO)
@@ -332,6 +334,7 @@ public class TramiteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpPost("ActualizarTramiteBasura/{id}")]
     public async Task<IActionResult> ActualizarTramiteBasuraAsync(int id,
         [FromBody] ServicioBasuraRegistroDto servicioBasuraRegistroDto)
@@ -353,7 +356,7 @@ public class TramiteController : ControllerBase
         }
     }
 
-    
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpPost("ActualizarTramiteExoneracion/{id}")]
     public async Task<IActionResult> ActualizarTramiteExoneracionAsync(int id,
         [FromBody] ExoneracionRegistroDto exoneracionRegistroDto)
@@ -375,6 +378,7 @@ public class TramiteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpPost("ActualizarTramiteAseoVias/{id}")]
     public async Task<IActionResult> ActualizarTramiteAseoViasAsync(int id,
        [FromBody] ServicioAseoViasRegistroDto servicioAseoViasRegistroDTO)
@@ -396,6 +400,7 @@ public class TramiteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpPost("ActualizarTramiteParquesOrnato/{id}")]
     public async Task<IActionResult> ActualizarTramiteParquesOrnatoAsync(int id,
    [FromBody] ServicioParquesOrnatoRegistroDto servicioParquesOrnatoRegistroDTO)
@@ -417,6 +422,7 @@ public class TramiteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpPost("ActualizarTramiteBienesInmuebles/{id}")]
     public async Task<IActionResult> ActualizarTramiteBienesInmueblesAsync(int id,
     [FromBody] BienesInmueblesRegistroDto bienesInmueblesRegistroDTO)
@@ -438,6 +444,7 @@ public class TramiteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe")]
     [HttpPost("actualizar/{id}")]
     public async Task<IActionResult> ActualizarTramite(int id, [FromBody] TramiteRegisterDto tramiteRegisterDto)
     {
@@ -456,7 +463,7 @@ public class TramiteController : ControllerBase
         }
     }
 
-
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerTodosLosTramites")]
     public async Task<IActionResult> ObtenerTodosLosTramites()
     {
@@ -476,6 +483,7 @@ public class TramiteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerInformacionTramitePorId/{id}")]
     public async Task<IActionResult> ObtenerInformacionTramitePorId(int id)
     {
@@ -495,6 +503,7 @@ public class TramiteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerTodoTramiteInformacion")]
     public async Task<IActionResult> ObtenerTodoTramiteInformacion()
     {
@@ -514,6 +523,7 @@ public class TramiteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerTramiteExoneracionPorId/{id}")]
     public async Task<IActionResult> ObtenerTramiteExoneracionInformacionPorId(int id)
     {
@@ -533,6 +543,7 @@ public class TramiteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerTramiteAseoViasPorId/{id}")]
     public async Task<IActionResult> ObtenerTramiteServicioAseoViasInformacionPorId(int id)
     {
@@ -552,6 +563,7 @@ public class TramiteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerTramiteBasuraPorId/{id}")]
     public async Task<IActionResult> ObtenerTramiteServicioBasuraInformacionPorId(int id)
     {
@@ -571,6 +583,7 @@ public class TramiteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerTramiteParquesOrnatoPorId/{id}")]
     public async Task<IActionResult> ObtenerTramiteServicioParquesOrnatoInformacionPorId(int id)
     {
@@ -590,6 +603,7 @@ public class TramiteController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerTramiteBienesInmueblesPorId/{id}")]
     public async Task<IActionResult> ObtenerTramiteBienesInmueblesInformacionPorId(int id)
     {
