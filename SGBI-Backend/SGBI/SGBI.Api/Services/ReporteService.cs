@@ -222,8 +222,13 @@ public class ReporteService : IReporteService
     }
 
 
-    public async Task<List<DetalleMesReporteContaduriaDTO>> ObtenerReporteContaduriaBienesInmueblesAsync(int Ano, bool? SoloRolSeleccionado, string? Rol)
+    public async Task<ReporteContaduriaDTO> ObtenerReporteContaduriaBienesInmueblesAsync(int Ano, bool? SoloRolSeleccionado, string? Rol)
     {
+
+        double TotalExclusionAnosAnterioresCounter = 0;
+        double TotalExclusionAnoActualCounter = 0;
+        double TotalInclusionAnosAnterioresCounter = 0;
+        double TotalInclusionAnoActualCounter = 0;
 
         var detalleMeses = new List<DetalleMesReporteContaduriaDTO>();
         for (int month = 1; month <= 12; month++)
@@ -305,6 +310,8 @@ public class ReporteService : IReporteService
                         {
                             detalleMes.InclusionAnoActual += bien.MontoTotalAnoActual;
                             detalleMes.InclusionAnoActual = Math.Round(detalleMes.InclusionAnoActual, 3);
+
+
                         }
                         if (bien.MontoTotalAnosAnteriores != null)
                         {
@@ -336,11 +343,34 @@ public class ReporteService : IReporteService
             throw new Exception("Ha ocurrido un error: " + e.Message, e);
         }
 
-        return detalleMeses;
+        for(int i = 0; i < 12; i++){
+
+            TotalExclusionAnosAnterioresCounter += detalleMeses[i].ExclusionAnosAnteriores;
+            TotalExclusionAnoActualCounter += detalleMeses[i].ExclusionAnoActual;
+            TotalInclusionAnosAnterioresCounter += detalleMeses[i].InclusionAnosAnteriores;
+            TotalInclusionAnoActualCounter += detalleMeses[i].InclusionAnoActual;
+        }
+
+        var reporteContaduria = new ReporteContaduriaDTO
+        {
+            TotalExclusionAnosAnteriores = TotalExclusionAnosAnterioresCounter,
+            TotalExclusionAnoActual = TotalExclusionAnoActualCounter,
+            TotalInclusionAnosAnteriores = TotalInclusionAnosAnterioresCounter,
+            TotalInclusionAnoActual = TotalInclusionAnoActualCounter,
+            detalleMesReporteContaduria = detalleMeses,
+        };
+
+        return reporteContaduria;
     }
 
-    public async Task<List<DetalleMesReporteContaduriaDTO>> ObtenerReporteContaduriaBasuraResidencialAsync(int Ano, bool? SoloRolSeleccionado, string? Rol)
+    public async Task<ReporteContaduriaDTO> ObtenerReporteContaduriaBasuraResidencialAsync(int Ano, bool? SoloRolSeleccionado, string? Rol)
     {
+
+        double TotalExclusionAnosAnterioresCounter = 0;
+        double TotalExclusionAnoActualCounter = 0;
+        double TotalInclusionAnosAnterioresCounter = 0;
+        double TotalInclusionAnoActualCounter = 0;
+
         var detalleMeses = new List<DetalleMesReporteContaduriaDTO>();
         for (int month = 1; month <= 12; month++)
         {
@@ -426,6 +456,7 @@ public class ReporteService : IReporteService
                         {
                             detalleMes.InclusionAnosAnteriores += basura.MontoAnoAnteriores;
                             detalleMes.InclusionAnosAnteriores = Math.Round(detalleMes.InclusionAnosAnteriores, 3);
+
                         }
 
                     }
@@ -451,11 +482,34 @@ public class ReporteService : IReporteService
             throw new Exception("Ha ocurrido un error: " + e.Message, e);
         }
 
-        return detalleMeses;
+        for (int i = 0; i < 12; i++)
+        {
+
+            TotalExclusionAnosAnterioresCounter += detalleMeses[i].ExclusionAnosAnteriores;
+            TotalExclusionAnoActualCounter += detalleMeses[i].ExclusionAnoActual;
+            TotalInclusionAnosAnterioresCounter += detalleMeses[i].InclusionAnosAnteriores;
+            TotalInclusionAnoActualCounter += detalleMeses[i].InclusionAnoActual;
+        }
+
+        var reporteContaduria = new ReporteContaduriaDTO
+        {
+            TotalExclusionAnosAnteriores = TotalExclusionAnosAnterioresCounter,
+            TotalExclusionAnoActual = TotalExclusionAnoActualCounter,
+            TotalInclusionAnosAnteriores = TotalInclusionAnosAnterioresCounter,
+            TotalInclusionAnoActual = TotalInclusionAnoActualCounter,
+            detalleMesReporteContaduria = detalleMeses,
+        };
+
+        return reporteContaduria;
     }
 
-    public async Task<List<DetalleMesReporteContaduriaDTO>> ObtenerReporteContaduriaAseoViasAsync(int Ano, bool? SoloRolSeleccionado, string? Rol)
+    public async Task<ReporteContaduriaDTO> ObtenerReporteContaduriaAseoViasAsync(int Ano, bool? SoloRolSeleccionado, string? Rol)
     {
+        double TotalExclusionAnosAnterioresCounter = 0;
+        double TotalExclusionAnoActualCounter = 0;
+        double TotalInclusionAnosAnterioresCounter = 0;
+        double TotalInclusionAnoActualCounter = 0;
+
         var detalleMeses = new List<DetalleMesReporteContaduriaDTO>();
         for (int month = 1; month <= 12; month++)
         {
@@ -566,11 +620,34 @@ public class ReporteService : IReporteService
             throw new Exception("Ha ocurrido un error: " + e.Message, e);
         }
 
-        return detalleMeses;
+        for (int i = 0; i < 12; i++)
+        {
+
+            TotalExclusionAnosAnterioresCounter += detalleMeses[i].ExclusionAnosAnteriores;
+            TotalExclusionAnoActualCounter += detalleMeses[i].ExclusionAnoActual;
+            TotalInclusionAnosAnterioresCounter += detalleMeses[i].InclusionAnosAnteriores;
+            TotalInclusionAnoActualCounter += detalleMeses[i].InclusionAnoActual;
+        }
+
+        var reporteContaduria = new ReporteContaduriaDTO
+        {
+            TotalExclusionAnosAnteriores = TotalExclusionAnosAnterioresCounter,
+            TotalExclusionAnoActual = TotalExclusionAnoActualCounter,
+            TotalInclusionAnosAnteriores = TotalInclusionAnosAnterioresCounter,
+            TotalInclusionAnoActual = TotalInclusionAnoActualCounter,
+            detalleMesReporteContaduria = detalleMeses,
+        };
+
+        return reporteContaduria;
     }
 
-    public async Task<List<DetalleMesReporteContaduriaDTO>> ObtenerReporteContaduriaMantenimientoParqueAsync(int Ano, bool? SoloRolSeleccionado, string? Rol)
+    public async Task<ReporteContaduriaDTO> ObtenerReporteContaduriaMantenimientoParqueAsync(int Ano, bool? SoloRolSeleccionado, string? Rol)
     {
+        double TotalExclusionAnosAnterioresCounter = 0;
+        double TotalExclusionAnoActualCounter = 0;
+        double TotalInclusionAnosAnterioresCounter = 0;
+        double TotalInclusionAnoActualCounter = 0;
+
         var detalleMeses = new List<DetalleMesReporteContaduriaDTO>();
         for (int month = 1; month <= 12; month++)
         {
@@ -681,6 +758,24 @@ public class ReporteService : IReporteService
             throw new Exception("Ha ocurrido un error: " + e.Message, e);
         }
 
-        return detalleMeses;
+        for (int i = 0; i < 12; i++)
+        {
+
+            TotalExclusionAnosAnterioresCounter += detalleMeses[i].ExclusionAnosAnteriores;
+            TotalExclusionAnoActualCounter += detalleMeses[i].ExclusionAnoActual;
+            TotalInclusionAnosAnterioresCounter += detalleMeses[i].InclusionAnosAnteriores;
+            TotalInclusionAnoActualCounter += detalleMeses[i].InclusionAnoActual;
+        }
+
+        var reporteContaduria = new ReporteContaduriaDTO
+        {
+            TotalExclusionAnosAnteriores = TotalExclusionAnosAnterioresCounter,
+            TotalExclusionAnoActual = TotalExclusionAnoActualCounter,
+            TotalInclusionAnosAnteriores = TotalInclusionAnosAnterioresCounter,
+            TotalInclusionAnoActual = TotalInclusionAnoActualCounter,
+            detalleMesReporteContaduria = detalleMeses,
+        };
+
+        return reporteContaduria;
     }
 }

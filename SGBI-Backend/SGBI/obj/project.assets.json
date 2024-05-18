@@ -4649,24 +4649,26 @@
     ]
   },
   "packageFolders": {
-    "/home/ache/.nuget/packages/": {}
+    "C:\\Users\\luisa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ache/Desktop/SGBI/SGBI-Backend/SGBI-Backend/SGBI/SGBI.csproj",
+      "projectUniqueName": "C:\\Users\\luisa\\Documents\\GitHub\\SGBI-Backend\\SGBI-Backend\\SGBI\\SGBI.csproj",
       "projectName": "SGBI",
-      "projectPath": "/home/ache/Desktop/SGBI/SGBI-Backend/SGBI-Backend/SGBI/SGBI.csproj",
-      "packagesPath": "/home/ache/.nuget/packages/",
-      "outputPath": "/home/ache/Desktop/SGBI/SGBI-Backend/SGBI-Backend/SGBI/obj/",
+      "projectPath": "C:\\Users\\luisa\\Documents\\GitHub\\SGBI-Backend\\SGBI-Backend\\SGBI\\SGBI.csproj",
+      "packagesPath": "C:\\Users\\luisa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\luisa\\Documents\\GitHub\\SGBI-Backend\\SGBI-Backend\\SGBI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/ache/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\luisa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4769,7 +4771,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.408/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -12,8 +12,8 @@ public interface IReporteService
 
     public Task<ObtenerConteoTramitesDTO> ObtenerConteoTramitesAsync(DateTime? FechaInicio, DateTime? FechaFinal, bool? SoloRolSeleccionado, string? Rol, string? Usuario);
     public Task<List<ReporteExoneracionDTO>> ReporteExoneracionAsync(DateTime? mes);
-    public Task<List<DetalleMesReporteContaduriaDTO>> ObtenerReporteContaduriaBienesInmueblesAsync(int Ano, bool? SoloRolSeleccionado, string? Rol);
-    public Task<List<DetalleMesReporteContaduriaDTO>> ObtenerReporteContaduriaBasuraResidencialAsync(int Ano, bool? SoloRolSeleccionado, string? Rol);
-    public Task<List<DetalleMesReporteContaduriaDTO>> ObtenerReporteContaduriaAseoViasAsync(int Ano, bool? SoloRolSeleccionado, string? Rol);
-    public Task<List<DetalleMesReporteContaduriaDTO>> ObtenerReporteContaduriaMantenimientoParqueAsync(int Ano, bool? SoloRolSeleccionado, string? Rol);
+    public Task<ReporteContaduriaDTO> ObtenerReporteContaduriaBienesInmueblesAsync(int Ano, bool? SoloRolSeleccionado, string? Rol);
+    public Task<ReporteContaduriaDTO> ObtenerReporteContaduriaBasuraResidencialAsync(int Ano, bool? SoloRolSeleccionado, string? Rol);
+    public Task<ReporteContaduriaDTO> ObtenerReporteContaduriaAseoViasAsync(int Ano, bool? SoloRolSeleccionado, string? Rol);
+    public Task<ReporteContaduriaDTO> ObtenerReporteContaduriaMantenimientoParqueAsync(int Ano, bool? SoloRolSeleccionado, string? Rol);
 }

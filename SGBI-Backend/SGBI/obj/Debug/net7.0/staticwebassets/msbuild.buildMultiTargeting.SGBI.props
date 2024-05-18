@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="../build/SGBI.props" />
+  <Import Project="..\build\SGBI.props" />
 </Project>

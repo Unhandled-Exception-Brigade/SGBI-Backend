@@ -210,7 +210,7 @@ public class TramiteController : ControllerBase
         }
     }
 
-    [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
+    //[Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpPost("UsarTramiteBienesInmuebles")]
     public async Task<IActionResult> BienesInmueblesRegistroDto(BienesInmueblesRegistroDto bienesInmueblesRegistroDto)
     {
