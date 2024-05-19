@@ -108,7 +108,7 @@ public class TramiteController : ControllerBase
             {
                 Message = exoneracion
             });
-
+            
         }catch (Exception ex)
         {
             return StatusCode(500, new { ex.Message, Error = ex.Message });
