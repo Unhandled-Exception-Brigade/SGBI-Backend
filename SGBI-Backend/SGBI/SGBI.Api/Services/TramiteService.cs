@@ -662,8 +662,27 @@ public class TramiteService : ITramiteService
 
         try
         {
-            var tramiteExistente =
-                await _context.Tramites.Include(t => t.TramiteCampo).FirstOrDefaultAsync(x => x.Id == id);
+            var tramiteExistente = await _context.Tramites.Include(t => t.TramiteCampo).FirstOrDefaultAsync(x => x.Id == id);
+            
+            var codigoExiste = await _context.Tramites.FirstOrDefaultAsync(x=>x.Codigo == tramiteRegisterDto.Codigo);
+
+            if (codigoExiste != null)
+            {
+                if (codigoExiste.Id != id)
+                {
+                    return "El codigo ya existe";
+                }
+            }
+
+            var nombreExiste = await _context.Tramites.FirstOrDefaultAsync(t => t.Nombre == tramiteRegisterDto.Nombre);
+                
+            if (nombreExiste != null)
+            {
+                if (nombreExiste.Id != id)
+                {
+                    return "El nombre ya existe";
+                }
+            }
 
             if (tramiteExistente != null)
             {
