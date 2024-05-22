@@ -41,7 +41,7 @@ public class SeedCodigoDepartamento
                 var VU = new CodigoDepartamento
                 {
                     Codigo = "VU",
-                    Descripcion = "Ventillas",
+                    Descripcion = "Ventanillas",
                     FechaCreacion = DateTime.Now,
                     FechaModificacion = DateTime.Now,
                     UsuarioCreacion = "SGBI",

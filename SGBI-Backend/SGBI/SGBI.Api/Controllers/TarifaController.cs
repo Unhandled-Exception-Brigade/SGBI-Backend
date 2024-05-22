@@ -129,7 +129,7 @@ public class TarifaController : ControllerBase
 
     [Authorize(Roles = "Administrador, Jefe, Usuario, Depuracion")]
     [HttpGet("ObtenerUltimosMontoYTarifas")]
-    public async Task<ActionResult<List<TarifaMonto>>> ObtenerUltimosTarifa_Montos([FromQuery] string descripcion)
+    public async Task<ActionResult<List<double>>> ObtenerUltimosTarifa_Montos([FromQuery] string descripcion)
     {
         if (descripcion == null)
         {

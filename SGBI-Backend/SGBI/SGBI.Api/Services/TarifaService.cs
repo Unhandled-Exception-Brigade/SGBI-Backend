@@ -113,7 +113,7 @@ public class TarifaService : ITarifaService
         return tarifasDto;
     }
 
-    public async Task<List<TarifaMonto>> ObtenerUltimosTarifa_MontosAsync(string descripcion)
+    public async Task<List<double>> ObtenerUltimosTarifa_MontosAsync(string descripcion)
     {
         var valor = await _context.Tarifas
                                 .Where(x => x.Descripcion == descripcion)
@@ -123,9 +123,12 @@ public class TarifaService : ITarifaService
 
         if (valor != null)
         {
-            var valores = _mapper.Map<List<TarifaMonto>>(valor);
+            var lista = new List<double>();
+            foreach (var t in valor) {
+                lista.Add(t.MontoColones);
+            }
 
-            return valores;
+            return lista;
         }
         else
         {

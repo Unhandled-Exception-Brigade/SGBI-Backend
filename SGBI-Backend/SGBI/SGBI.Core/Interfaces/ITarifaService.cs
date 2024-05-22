@@ -17,5 +17,5 @@ public interface ITarifaService
 
     Task<List<TarifaDto>> ListarTarifaServiciosBasuraAsync();
 
-    Task<List<TarifaMonto>> ObtenerUltimosTarifa_MontosAsync(string descripcion);
+    Task<List<double>> ObtenerUltimosTarifa_MontosAsync(string descripcion);
 }
